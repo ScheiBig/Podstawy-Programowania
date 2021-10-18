@@ -1,16 +1,13 @@
 #include <stdio.h>
 
-int main(int argc, char const *argv[])
+int main()
 {
-    int nums[10], i = 0;
+    int n0, n1, n2, n3, n4, n5, n6, n7, n8, n9;
     printf("Input 10 numbers: \n");
     scanf("%d %d %d %d %d %d %d %d %d %d",
-        nums+i++, nums+i++, nums+i++, nums+i++, nums+i++,
-        nums+i++, nums+i++, nums+i++, nums+i++, nums+i++);
-    i = 0;
-    printf("Yours numbers average: %.4f", 
-        (nums[i++] + nums[i++] + nums[i++] + nums[i++] + nums[i++]
-         + nums[i++] + nums[i++] + nums[i++] + nums[i++] + nums[i++])
+        &n0, &n1, &n2, &n3, &n4, &n5, &n6, &n7, &n8, &n9);
+    printf("Yours numbers average: %.4f\n1 ", 
+        (n0 + n1 + n2 + n3 + n4 + n5 + n6 + n7 + n8 + n9)
          / 10.0);
 
     return 0;
