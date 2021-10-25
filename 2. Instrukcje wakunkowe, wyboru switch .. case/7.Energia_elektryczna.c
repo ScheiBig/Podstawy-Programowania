@@ -1,8 +1,11 @@
 #include <stdio.h>
 
 #define R1 50
-#define R2 150
-#define R3 250
+#define R2 100
+#define R3 100
+
+#define R12 (R1 + R2)
+#define R123 (R1 + R2 + R3)
 
 #define C1 0.50
 #define C2 0.75
@@ -26,17 +29,17 @@ int main()
         return 1;
     }
     
-    if ((calc = kWh - R3) > 0)
+    if ((calc = kWh - R123) > 0)
     {
         sum = RC1 + RC2 + RC3 + calc * C4;
     }
-    else if ((calc = kWh - R2) > 0)
+    else if ((calc = kWh - R12) > 0)
     {
-        sum = RC1 + RC2 + calc * C3;
+        sum = RC1 + (RC2 + calc * C3);
     }
     else if ((calc = kWh - R1) > 0)
     {
-        sum = RC1 + calc * C1;
+        sum = RC1 + calc * C2;
     }
     else
     {
@@ -45,8 +48,6 @@ int main()
     
     sum *= 1.22;
     printf("Cost: %f\n", sum);
-    
-    
 
     return 0;
 }
