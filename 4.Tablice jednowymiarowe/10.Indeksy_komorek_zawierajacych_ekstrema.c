@@ -41,7 +41,7 @@ int main()
 
     for (size_t i = 0; i < num_count; ++i)
     {
-        if (min == nums[i]) 
+        if (min == nums[i])
         {
             min_i[min_c] = i;
             ++min_c;
