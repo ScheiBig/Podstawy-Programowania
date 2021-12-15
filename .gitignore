@@ -3,5 +3,4 @@
 
 # But source files
 !*/*.c
-
 workspace.c
