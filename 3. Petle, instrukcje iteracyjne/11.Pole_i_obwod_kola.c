@@ -13,9 +13,13 @@ int main()
         fgets(buffer, sizeof buffer, stdin);
         radius *= sscanf(buffer, "%f", &radius) == 1;
         if (radius > 1)
-        { break; }
+        {
+            break;
+        }
         else
-        { printf("Incorrect input\n"); }
+        {
+            printf("Incorrect input\n");
+        }
     }
     printf("Circumference: %.3f\n", 2 * radius * PI);
     printf("Area: %.3f\n", radius * radius * PI);

@@ -11,6 +11,6 @@ int main()
     printf("Input c: ");
     scanf("%d", &c);
 
-    printf("%.2f\n", sqrt(a*a + b*b + c*c));
+    printf("%.2f\n", sqrt(a * a + b * b + c * c));
     return 0;
 }

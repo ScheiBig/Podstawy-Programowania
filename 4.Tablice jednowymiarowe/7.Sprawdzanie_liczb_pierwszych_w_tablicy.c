@@ -11,11 +11,15 @@ typedef enum NumType
 num_type checkPrime(int num)
 {
     if (num <= 1)
-    { return nt_other; }
+    {
+        return nt_other;
+    }
     for (int i = 2; i <= sqrt(num); i++)
     {
         if (i != num && num % i == 0)
-        { return nt_composite; }
+        {
+            return nt_composite;
+        }
     }
     return nt_prime;
 }
@@ -39,21 +43,21 @@ int main()
         printf("%zu %d ", i, nums[i]);
         switch (checkPrime(nums[i]))
         {
-            case nt_prime:
-            {
-                printf("prime\n");
-                break;
-            }
-            case nt_composite:
-            {
-                printf("composite\n");
-                break;
-            }
-            case nt_other:
-            {
-                printf("other\n");
-                break;
-            }
+        case nt_prime:
+        {
+            printf("prime\n");
+            break;
+        }
+        case nt_composite:
+        {
+            printf("composite\n");
+            break;
+        }
+        case nt_other:
+        {
+            printf("other\n");
+            break;
+        }
         }
     }
 

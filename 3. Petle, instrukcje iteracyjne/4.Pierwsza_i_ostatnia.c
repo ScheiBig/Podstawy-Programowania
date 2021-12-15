@@ -10,7 +10,7 @@ int main()
         return 1;
     }
 
-    int t = (int) (number % 10);
+    int t = (int)(number % 10);
     int last_digit = t == 10 ? 0 : t;
 
     unsigned long long first_digit = number;
@@ -18,7 +18,7 @@ int main()
     {
         first_digit /= 10;
     }
-    printf("First digit: %d\n", (int) first_digit);
+    printf("First digit: %d\n", (int)first_digit);
     printf("Last digit: %d\n", last_digit);
 
     return 0;

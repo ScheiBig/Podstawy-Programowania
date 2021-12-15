@@ -6,9 +6,9 @@ int main()
     printf("Input 5 numbers: \n");
     scanf("%f %f %f %f %f",
         &n0, &n1, &n2, &n3, &n4);
-    printf("Yours numbers average: %.4f\n1 ", 
+    printf("Yours numbers average: %.4f\n1 ",
         (n0 + n1 + n2 + n3 + n4)
-         / 5);
+        / 5);
 
     return 0;
 }

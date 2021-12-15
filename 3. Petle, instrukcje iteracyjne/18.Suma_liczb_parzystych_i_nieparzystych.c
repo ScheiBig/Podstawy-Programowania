@@ -19,12 +19,18 @@ int main()
             if (sscanf(buffer + i, "%d %n", &current, &len) == 1)
             {
                 if (current == -1)
-                { break; }
+                {
+                    break;
+                }
 
                 if (current % 2 == 0)
-                { even_sum += current; }
+                {
+                    even_sum += current;
+                }
                 else
-                { odd_sum += current; }
+                {
+                    odd_sum += current;
+                }
 
                 ++num_count;
                 i += len;

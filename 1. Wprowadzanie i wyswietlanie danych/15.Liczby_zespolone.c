@@ -5,7 +5,7 @@
 
 int main()
 {
-    
+
     float real1, real2, imag1, imag2;
 
     printf("Input first numbers real part: ");
@@ -17,11 +17,11 @@ int main()
     printf("Input first numbers imaginary part: ");
     scanf("%f", &imag2);
 
-    float sum[] = { real1 + real2, 
+    float sum[] = { real1 + real2,
         imag1 + imag2 };
-    float difference[] = { real1 - real2, 
+    float difference[] = { real1 - real2,
         imag1 - imag2 };
-    float product[] = { real1 * real2 - imag1 * imag2, 
+    float product[] = { real1 * real2 - imag1 * imag2,
         imag1 * real2 + imag2 * real1 };
     float denominator = real2 * real2 + imag2 * imag2;
     float quotient[] = { (real1 * real2 + imag1 * imag2) / denominator,
@@ -35,12 +35,12 @@ int main()
     sprintf(p_s, "%+.3f", product[I]);
     sprintf(q_s, "%+.3f", quotient[I]);
 
-    printf("First number: %.3f%ci%s\n", real1, i1_s[0], i1_s+1);
-    printf("Second number: %.3f%ci%s\n", real2, i2_s[0], i2_s+1);
-    printf("Sum: %.3f%ci%s\n", sum[R], s_s[0], s_s+1);
-    printf("Difference: %.3f%ci%s\n", difference[R], d_s[0], d_s+1);
-    printf("Product: %.3f%ci%s\n", product[R], p_s[0], p_s+1);
-    printf("Quotient: %.3f%ci%s\n", quotient[R], q_s[0], q_s+1);
+    printf("First number: %.3f%ci%s\n", real1, i1_s[0], i1_s + 1);
+    printf("Second number: %.3f%ci%s\n", real2, i2_s[0], i2_s + 1);
+    printf("Sum: %.3f%ci%s\n", sum[R], s_s[0], s_s + 1);
+    printf("Difference: %.3f%ci%s\n", difference[R], d_s[0], d_s + 1);
+    printf("Product: %.3f%ci%s\n", product[R], p_s[0], p_s + 1);
+    printf("Quotient: %.3f%ci%s\n", quotient[R], q_s[0], q_s + 1);
 
     return 0;
 }

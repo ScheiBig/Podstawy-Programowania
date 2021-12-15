@@ -17,9 +17,13 @@ int main()
         scanf("%d", &current);
 
         if (current > num)
-        { printf("Za duzo\n"); }
+        {
+            printf("Za duzo\n");
+        }
         else if (current < num)
-        { printf("Za malo\n"); }
+        {
+            printf("Za malo\n");
+        }
         else
         {
             printf("wygrales");

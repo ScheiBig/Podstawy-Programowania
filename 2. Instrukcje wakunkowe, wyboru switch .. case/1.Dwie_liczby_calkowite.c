@@ -10,7 +10,7 @@ int main()
         printf("Incorrect input\n");
         return 1;
     }
-    
+
     printf("%d\n", num1 + num2);
     return 0;
 }

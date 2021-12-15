@@ -49,6 +49,6 @@ int main()
         printf("Incorrect input\n");
         return 1;
     }
-        
+
     return 0;
 }

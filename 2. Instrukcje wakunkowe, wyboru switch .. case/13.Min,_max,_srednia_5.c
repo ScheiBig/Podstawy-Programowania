@@ -6,7 +6,7 @@ int main()
 
     printf("Input 5 numbers:\n");
     scanf("%f %f %f %f %f", &num1, &num2, &num3, &num4, &num5);
-    
+
     avg = (num1 + num2 + num3 + num4 + num5) / 5;
     max = num1;
     min = num1;

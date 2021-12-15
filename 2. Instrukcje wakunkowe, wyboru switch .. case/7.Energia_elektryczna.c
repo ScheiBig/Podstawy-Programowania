@@ -28,7 +28,7 @@ int main()
         printf("Incorrect input\n");
         return 1;
     }
-    
+
     if ((calc = kWh - R123) > 0)
     {
         sum = RC1 + RC2 + RC3 + calc * C4;
@@ -45,7 +45,7 @@ int main()
     {
         sum = kWh * C1;
     }
-    
+
     sum *= 1.22;
     printf("Cost: %f\n", sum);
 

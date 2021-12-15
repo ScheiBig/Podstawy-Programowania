@@ -8,7 +8,7 @@ int main()
     double sum = 0;
     printf("Enter 10 numbers: ");
     if (scanf("%f %f %f %f %f %f %f %f %f %f", numbers, numbers + 1, numbers + 2, numbers + 3, numbers + 4, numbers + 5,
-              numbers + 6, numbers + 7, numbers + 8, numbers + 9) != 10)
+        numbers + 6, numbers + 7, numbers + 8, numbers + 9) != 10)
     {
         printf("Incorrect input");
         return 1;

@@ -1,7 +1,7 @@
 #include <stdio.h>
 
-char dictionary [11][10] = {"zero", "jeden", "dwa", "trzy", "cztery",
-    "piec", "szesc", "siedem", "osiem", "dziewiec", "dziesiec"};
+char dictionary[11][10] = { "zero", "jeden", "dwa", "trzy", "cztery",
+    "piec", "szesc", "siedem", "osiem", "dziewiec", "dziesiec" };
 
 int main()
 {
@@ -11,7 +11,7 @@ int main()
     {
         printf("Incorrect input\n");
         return 1;
-    } 
+    }
     else if (num < 0 || num > 10)
     {
         printf("Incorrect input data");

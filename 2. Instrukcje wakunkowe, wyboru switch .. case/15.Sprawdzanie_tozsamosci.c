@@ -25,7 +25,7 @@ int main()
     {
         printf("tozsamosc jest prawdziwa\n");
     }
-    else 
+    else
     {
         printf("tozsamosc nie jest prawdziwa\n");
     }

@@ -42,6 +42,6 @@ int main()
     {
         printf("brak\n");
     }
-    
+
     return 0;
 }

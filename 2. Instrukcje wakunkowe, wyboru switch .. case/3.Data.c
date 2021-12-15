@@ -6,7 +6,7 @@ int main()
     int success;
     printf("Input date (dd-mm-yyyy): \n");
     success = scanf("%2u-%2u-%4u", &day, &month, &year);
-    if (success != 3) 
+    if (success != 3)
     {
         printf("Incorrect input\n");
         return 1;
@@ -42,7 +42,7 @@ int main()
         {
             printf("Incorrect\n");
         }
-    } 
+    }
     else if (month == 2)
     {
         if (year % 4 == 0 &&
@@ -57,7 +57,7 @@ int main()
             else
             {
                 printf("Incorrect\n");
-            }   
+            }
         }
         else
         {
@@ -68,8 +68,8 @@ int main()
             else
             {
                 printf("Incorrect\n");
-            }   
-            
+            }
+
         }
     }
     else

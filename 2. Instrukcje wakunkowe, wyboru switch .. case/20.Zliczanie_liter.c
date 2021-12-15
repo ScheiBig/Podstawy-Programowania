@@ -6,7 +6,7 @@ int main()
     printf("Input 5 letters: ");
     scanf(" %c%c%c%c%c", let, let + 1, let + 2, let + 3, let + 4);
 
-    int count =  0;
+    int count = 0;
 
     if (let[0] == 'x' || let[0] == 'y' || let[0] == 'z' ||
         let[0] == '2' || let[0] == '7') ++count;

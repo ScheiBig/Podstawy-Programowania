@@ -52,11 +52,11 @@ int main()
     case 10:
         printf("%s\n", dictionary[10]);
         break;
-    
+
     default:
         printf("Incorrect input\n");
         return 1;
     }
-    
+
     return 0;
 }

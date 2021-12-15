@@ -6,7 +6,7 @@ int main()
 
     printf("Input your numer: ");
     success = scanf("%d", &num);
-    
+
     if (success - 1)
     {
         printf("Incorrect input\n");
