@@ -2,3 +2,4 @@
 
 #define A_SIZE(A) (sizeof(A) / sizeof(A[0]))
 
+#define IS_LETTER(A) ('a' <= A && A <= 'z' || 'A' <= A && A <= 'Z')
