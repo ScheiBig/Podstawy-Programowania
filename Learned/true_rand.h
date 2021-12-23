@@ -16,7 +16,7 @@ union true_random_data
     short _short;
     unsigned short _ushort;
     int _int;
-    unsigned int _int;
+    unsigned int _uint;
     long _long;
     unsigned long _ulong;
     long long _longer;
