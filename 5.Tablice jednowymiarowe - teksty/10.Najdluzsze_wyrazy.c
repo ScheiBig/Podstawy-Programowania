@@ -4,7 +4,7 @@
 
 #define IS_LETTER(A) ('a' <= A && A <= 'z' || 'A' <= A && A <= 'Z')
 
-#define BUF_LEN 999
+#define BUF_LEN 1000
 #define WRD_LEN 501
 
 typedef struct _word
@@ -22,9 +22,9 @@ typedef enum _char_tp
 int main()
 {
 
-    char buffer[BUF_LEN + 2] = { (char)0 };
+    char buffer[BUF_LEN + 1] = { (char)0 };
     printf("Enter your string: ");
-    fgets(buffer, BUF_LEN + 2, stdin);
+    fgets(buffer, BUF_LEN + 1, stdin);
     if (buffer[strlen(buffer) - 1] <= ' ')
     {
         buffer[strlen(buffer) - 1] = (char)0;
