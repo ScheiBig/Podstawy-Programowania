@@ -22,6 +22,7 @@
     float: cbrtf \
 )(x)
 
+// needs <stddef.h>, useful via <stdio.h>
 #define _REGISTER_ARRAY(type) \
     typedef struct \
     { \
