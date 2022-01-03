@@ -1,7 +1,10 @@
-# Everything
+# Ignore everything
 */*
 
-# But source files
+# Unignore source files in subdirectories
 !*/*.c
 !*/*.h
-workspace.c
+
+# Ignore source files in main directory
+/*.c
+/*.h
