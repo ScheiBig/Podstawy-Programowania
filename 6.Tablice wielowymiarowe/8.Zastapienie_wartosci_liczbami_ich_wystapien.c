@@ -4,7 +4,10 @@
 #include <math.h>
 
 #include "my_utils.h"
+
+#define __MATRIX_PRINT__
 #include "matrix.h"
+#undef __MATRIX_PRINT__
 
 #define R_START 0
 #define R_END 30

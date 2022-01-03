@@ -3,8 +3,7 @@
 
 // (C) Marcin Jeznach (TM), plz no steal
 
-void swap_int(int*, int*);
-
+#include <stdio.h>
 #define eprintf(msg) fprintf(stderr, msg)
 #define _e_exit(eno, msg) { eprintf(msg); return eno; }
 
@@ -23,11 +22,12 @@ void swap_int(int*, int*);
 #define COND_ASSIGN_G(to, arg) (to = to > arg ? arg : to)
 #define COND_ASSIGN_GE(to, arg) (to = to >= arg ? arg : to)
 
-void swap_int(int* a1, int* a2)
-{
-    int temp = *a1;
-    *a1 = *a2;
-    *a2 = temp;
-}
+#define REGISTER_SWAP(type) \
+    void swap_int(type* a1, type* a2)\
+    {\
+        type temp = *a1;\
+        *a1 = *a2;\
+        *a2 = temp;\
+    }\
 
 #endif //PODSTAWY_PROGRAMOWANIA_1_MY_UTILS_H

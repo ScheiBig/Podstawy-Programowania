@@ -4,7 +4,13 @@
 #include <math.h>
 
 #include "my_utils.h"
+
+#define __MATRIX_MUL__
+#define __MATRIX_PRINT__
 #include "matrix.h"
+#undef __MATRIX_MUL__
+#undef __MATRIX_PRINT__
+
 
 #define MAT_SIZ 4
 REGISTER_INT_MATRIX(4)

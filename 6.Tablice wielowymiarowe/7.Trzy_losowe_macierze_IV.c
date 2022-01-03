@@ -4,7 +4,16 @@
 #include <math.h>
 
 #include "my_utils.h"
+
+#define __MATRIX_RSUM__
+#define __MATRIX_CSUM__
+#define __MATRIX_PRINT__
+#define __VECTOR_PRINT__
 #include "matrix.h"
+#undef __MATRIX_RSUM__
+#undef __MATRIX_CSUM__
+#undef __MATRIX_PRINT__
+#undef __VECTOR_PRINT__
 
 #define MAT_SIZ 4
 REGISTER_INT_MATRIX(4)
