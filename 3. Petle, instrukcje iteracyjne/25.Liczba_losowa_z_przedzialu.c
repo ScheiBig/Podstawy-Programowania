@@ -4,7 +4,7 @@
 
 int main()
 {
-    srand(time(NULL));
+    srand((unsigned int)time(NULL));
 
     printf("%d\n", rand() % (40 - 30) + 30);
 

@@ -12,7 +12,7 @@
 
 int main()
 {
-    srand(time(NULL));
+    srand((unsigned int)time(NULL));
     int A[MAT_SIZ][MAT_SIZ] = { 0 };
     int B[MAT_SIZ][MAT_SIZ] = { 0 };
     int C[MAT_SIZ][MAT_SIZ] = { 0 };

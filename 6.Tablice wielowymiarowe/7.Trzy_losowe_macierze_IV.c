@@ -16,10 +16,12 @@ int main()
     int B[MAT_SIZ][MAT_SIZ] = { 0 };
     int C[MAT_SIZ][MAT_SIZ] = { 0 };
 
-    int AmB[MAT_SIZ][MAT_SIZ] = { 0 };
-    int BmA[MAT_SIZ][MAT_SIZ] = { 0 };
-    int AmC[MAT_SIZ][MAT_SIZ] = { 0 };
-    int CmA[MAT_SIZ][MAT_SIZ] = { 0 };
+    int Ar[MAT_SIZ] = { 0 };
+    int Ac[MAT_SIZ] = { 0 };
+    int Br[MAT_SIZ] = { 0 };
+    int Bc[MAT_SIZ] = { 0 };
+    int Cr[MAT_SIZ] = { 0 };
+    int Cc[MAT_SIZ] = { 0 };
 
     for (size_t r = 0; r < MAT_SIZ; ++r)
     {
@@ -31,18 +33,22 @@ int main()
         }
     }
 
-    matrix_mul_4(A, B, AmB);
-    matrix_mul_4(B, A, BmA);
-    matrix_mul_4(A, C, AmC);
-    matrix_mul_4(C, A, CmA);
+    matrix_rowsum_4(A, Ar);
+    matrix_colsum_4(A, Ac);
+    matrix_rowsum_4(B, Br);
+    matrix_colsum_4(B, Bc);
+    matrix_rowsum_4(C, Cr);
+    matrix_colsum_4(C, Cc);
 
     matrix_print_4(A, 3);
     matrix_print_4(B, 3);
     matrix_print_4(C, 3);
-    matrix_print_4(AmB, 3);
-    matrix_print_4(BmA, 3);
-    matrix_print_4(AmC, 3);
-    matrix_print_4(CmA, 3);
+    vector_print_4(Ac, 3);
+    vector_print_4(Ar, 3);
+    vector_print_4(Bc, 3);
+    vector_print_4(Br, 3);
+    vector_print_4(Cc, 3);
+    vector_print_4(Cr, 3);
 
     return 0;
 }

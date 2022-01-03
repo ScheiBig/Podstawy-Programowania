@@ -6,7 +6,7 @@
 
 int main()
 {
-    srand(time(NULL));
+    srand((unsigned int)time(NULL));
 
     int num = RAND_RANG(100, 0);
     int current;

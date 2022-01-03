@@ -48,8 +48,32 @@ void matrix_mul_##size(int m1[size][size], int m2[size][size], int out[size][siz
             out[r][c] = 0;\
             for (int i = 0; i < size; ++i)\
             {\
-                out[r][c] += m1[r][i] + m2[i][c];\
+                out[r][c] += m1[r][i] * m2[i][c];\
             }\
+        }\
+    }\
+}\
+\
+void matrix_colsum_##size(int m[size][size], int out[size])\
+{\
+    for (int r = 0; r < size; ++r)\
+    {\
+        out[r] = 0;\
+        for (int c = 0; c < size; ++c)\
+        {\
+            out[r] += m[r][c];\
+        }\
+    }\
+}\
+\
+void matrix_rowsum_##size(int m[size][size], int out[size])\
+{\
+    for (int c = 0; c < size; ++c)\
+    {\
+        out[c] = 0;\
+        for (int r = 0; r < size; ++r)\
+        {\
+            out[c] += m[r][c];\
         }\
     }\
 }\
@@ -63,6 +87,15 @@ void matrix_print_##size(int m[size][size], int width)\
             printf("%*d ", width, m[r][c]);\
         }\
         printf("\n");\
+    }\
+    printf("\n");\
+}\
+\
+void vector_print_##size(int v[size], int width)\
+{\
+    for (size_t r = 0; r < size; ++r)\
+    {\
+        printf("%*d ", width, v[r]);\
     }\
     printf("\n");\
 }\

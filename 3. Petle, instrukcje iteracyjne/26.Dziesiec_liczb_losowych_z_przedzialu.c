@@ -4,7 +4,7 @@
 
 int main()
 {
-    srand(time(NULL));
+    srand((unsigned int)time(NULL));
 
     for (int i = 0; i < 10; ++i)
     {
