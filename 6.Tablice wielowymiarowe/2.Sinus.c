@@ -1,7 +1,4 @@
 #include <stdio.h>
-#define _USE_MATH_DEFINES 1
-#define __USE_MISC 1
-#define __USE_XOPEN 1
 #include <math.h>
 
 #define ARR_ROWS 2
