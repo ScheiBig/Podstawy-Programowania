@@ -30,4 +30,11 @@
         *a2 = temp;\
     }\
 
+typedef struct
+{
+    int x;
+    int y;
+    int set;
+} coords2d;
+
 #endif //PODSTAWY_PROGRAMOWANIA_1_MY_UTILS_H
