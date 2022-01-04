@@ -4,6 +4,7 @@ int main()
 {
     int day;
     printf("Enter number of  weekday: ");
+    //NOLINTNEXTLINE(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling) -> Dante doesn't provide *_s
     scanf("%d", &day);
     switch (day)
     {

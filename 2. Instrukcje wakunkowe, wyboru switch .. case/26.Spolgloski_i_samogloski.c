@@ -7,6 +7,7 @@ int main()
     uchar letter = (char)0;
 
     printf("Input your letter: ");
+    //NOLINTNEXTLINE(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling) -> Dante doesn't provide *_s
     scanf(" %c", &letter);
     letter *= letter >= 'A' || letter >= 'a';
     letter *= letter <= 'Z' || letter <= 'z';

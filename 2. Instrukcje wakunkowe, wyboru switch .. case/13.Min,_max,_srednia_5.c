@@ -5,6 +5,7 @@ int main()
     float min, max, avg, num1, num2, num3, num4, num5;
 
     printf("Input 5 numbers:\n");
+    //NOLINTNEXTLINE(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling) -> Dante doesn't provide *_s
     scanf("%f %f %f %f %f", &num1, &num2, &num3, &num4, &num5);
 
     avg = (num1 + num2 + num3 + num4 + num5) / 5;

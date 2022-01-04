@@ -4,6 +4,7 @@ int main()
 {
     float num;
     printf("Input your number: ");
+    //NOLINTNEXTLINE(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling) -> Dante doesn't provide *_s
     if (scanf("%f", &num) == 1)
     {
         if (num > 0)

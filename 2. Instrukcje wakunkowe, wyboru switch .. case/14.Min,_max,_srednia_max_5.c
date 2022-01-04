@@ -13,6 +13,7 @@ int main()
 
     printf("Input 5 numbers:\n");
     fgets(buffer, sizeof(buffer), stdin);
+    //NOLINTNEXTLINE(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling) -> Dante doesn't provide *_s
     sscanf(buffer, "%f %f %f %f %f", &num1, &num2, &num3, &num4, &num5);
 
     avg = num1;

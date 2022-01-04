@@ -5,12 +5,14 @@ int main()
     float float1, float2;
 
     printf("Input first number: ");
+    //NOLINTNEXTLINE(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling) -> Dante doesn't provide *_s
     if (scanf("%f", &float1) != 1)
     {
         printf("Incorrect input\n");
         return 1;
     }
     printf("Input second number: ");
+    //NOLINTNEXTLINE(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling) -> Dante doesn't provide *_s
     if (scanf("%f", &float2) != 1)
     {
         printf("Incorrect input\n");

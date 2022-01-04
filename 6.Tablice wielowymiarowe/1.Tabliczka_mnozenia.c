@@ -6,7 +6,7 @@
 
 int main()
 {
-    int mul_table[MAT_ROW][MAT_COL] = { 0 };
+    int mul_table[MAT_ROW][MAT_COL] = { { 0 } };
 
     for (size_t r = 0; r < MAT_ROW; ++r)
     {

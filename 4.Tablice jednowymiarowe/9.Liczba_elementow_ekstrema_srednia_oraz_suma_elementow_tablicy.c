@@ -17,6 +17,7 @@ int main()
         int current;
         for (size_t i = 0; i < BUF_LEN;)
         {
+            //NOLINTNEXTLINE(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling) -> Dante doesn't provide *_s
             if (sscanf(buffer + i, "%d %n", &current, &len) == 1)
             {
                 if (current == -1 || num_count >= 100) break;

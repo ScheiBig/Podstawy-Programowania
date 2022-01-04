@@ -4,6 +4,7 @@ int main()
 {
     int nums[2];
     printf("Input your numbers: ");
+    //NOLINTNEXTLINE(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling) -> Dante doesn't provide *_s
     scanf("%d %d", nums, nums + 1);
 
     int comp = nums[0] - nums[1];

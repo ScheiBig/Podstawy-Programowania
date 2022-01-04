@@ -6,12 +6,14 @@ int main()
     int months;
 
     printf("Input starting amount: ");
+    //NOLINTNEXTLINE(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling) -> Dante doesn't provide *_s
     if (scanf("%f", &amount) != 1 || amount < 0)
     {
         printf("Incorrect input");
         return 1;
     }
     printf("Input number of months: ");
+    //NOLINTNEXTLINE(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling) -> Dante doesn't provide *_s
     if (scanf("%d", &months) != 1 || months < 0)
     {
         printf("Incorrect input");

@@ -15,7 +15,7 @@ REGISTER_INT_MATRIX(10)
 
 int main()
 {
-    int M[MAT_SIZ][MAT_SIZ] = { 0 };
+    int M[MAT_SIZ][MAT_SIZ] = { { 0 } };
     int C[MAT_SIZ] = { 0 };
     int R[MAT_SIZ] = { 0 };
     int max = INT_MIN;
@@ -26,6 +26,7 @@ int main()
     {
         for (size_t c = 0; c < MAT_SIZ; ++c)
         {
+            //NOLINTNEXTLINE(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling) -> Dante doesn't provide *_s
             if (scanf("%d", *(M + r) + c) != 1) _e_exit(1, "Incorrect input\n");
             if (M[r][c] % 2 == 0) COND_ASSIGN_L(max, M[r][c]);
         }

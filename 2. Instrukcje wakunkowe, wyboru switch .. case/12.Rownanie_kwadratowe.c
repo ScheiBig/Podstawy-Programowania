@@ -6,10 +6,13 @@ int main()
     float a, b, c;
     printf("Input quadratic formula coefficients\n");
     printf("a: ");
+    //NOLINTNEXTLINE(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling) -> Dante doesn't provide *_s
     scanf("%f", &a);
     printf("b: ");
+    //NOLINTNEXTLINE(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling) -> Dante doesn't provide *_s
     scanf("%f", &b);
     printf("c: ");
+    //NOLINTNEXTLINE(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling) -> Dante doesn't provide *_s
     scanf("%f", &c);
 
     float delta = b * b - 4 * a * c;

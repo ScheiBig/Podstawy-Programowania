@@ -6,6 +6,7 @@ int main()
     char sign;
 
     printf("Input complex number: ");
+    //NOLINTNEXTLINE(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling) -> Dante doesn't provide *_s
     success = scanf("%d%ci%d", &real, &sign, &imag);
     if (success != 3 || (sign != '+' && sign != '-') || imag < 0)
     {

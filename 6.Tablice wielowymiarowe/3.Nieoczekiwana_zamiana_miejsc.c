@@ -15,7 +15,7 @@ void swap(int* a1, int* a2)
 
 int main()
 {
-    int mul_table[MAT_SIZ][MAT_SIZ] = { 0 };
+    int mul_table[MAT_SIZ][MAT_SIZ] = { { 0 } };
 
     int a = 5, b = 9;
 
@@ -27,6 +27,7 @@ int main()
     {
         for (size_t c = 0; c < MAT_SIZ; ++c)
         {
+            //NOLINTNEXTLINE(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling) -> Dante doesn't provide *_s
             if (scanf("%d", *(mul_table + r) + c) != 1) _e_exit(1, "Incorrect input\n");
         }
     }

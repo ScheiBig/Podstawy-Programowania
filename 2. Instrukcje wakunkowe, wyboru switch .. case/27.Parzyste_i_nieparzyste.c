@@ -4,6 +4,7 @@ int main()
 {
     int num, success, comp;
     printf("Input your number: ");
+    //NOLINTNEXTLINE(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling) -> Dante doesn't provide *_s
     success = scanf("%d", &num);
 
     comp = 10 * (success == 1) + num % 2;

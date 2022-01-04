@@ -14,6 +14,7 @@ int main()
     for (int i = 10; i > 0; --i)
     {
         printf("Enter your guess: ");
+        //NOLINTNEXTLINE(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling) -> Dante doesn't provide *_s
         scanf("%d", &current);
 
         if (current > num)

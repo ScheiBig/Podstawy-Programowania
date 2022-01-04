@@ -9,6 +9,7 @@ int main()
     printf("Enter 10 numbers:\n");
     for (size_t i = 0; i < A_SIZE(nums) / 2; ++i)
     {
+        //NOLINTNEXTLINE(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling) -> Dante doesn't provide *_s
         if (scanf("%lf %lf", nums + (2 * i), nums + (2 * i + 1)) != 2)
         {
             printf("Input data type error");

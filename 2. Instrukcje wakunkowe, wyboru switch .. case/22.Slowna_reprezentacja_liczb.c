@@ -8,6 +8,7 @@ int main()
     int num;
     printf("Input your number: ");
 
+    //NOLINTNEXTLINE(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling) -> Dante doesn't provide *_s
     switch (scanf("%d", &num))
     {
     case 1:

@@ -5,6 +5,7 @@ int main()
     int month;
 
     printf("Input month number: ");
+    //NOLINTNEXTLINE(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling) -> Dante doesn't provide *_s
     switch (scanf("%d", &month))
     {
     case 1:

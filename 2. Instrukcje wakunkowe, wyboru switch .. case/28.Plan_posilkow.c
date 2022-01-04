@@ -11,6 +11,7 @@ int main()
     };
     int success, plan;
     printf("Enter your choice: ");
+    //NOLINTNEXTLINE(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling) -> Dante doesn't provide *_s
     success = scanf(" %c", &choice);
     choice *= success == 1;
     choice *= choice >= 'A' && choice <= 'C';

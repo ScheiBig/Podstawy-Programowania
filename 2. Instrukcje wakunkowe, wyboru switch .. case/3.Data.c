@@ -5,6 +5,7 @@ int main()
     unsigned int day, month, year;
     int success;
     printf("Input date (dd-mm-yyyy): \n");
+    //NOLINTNEXTLINE(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling) -> Dante doesn't provide *_s
     success = scanf("%2u-%2u-%4u", &day, &month, &year);
     if (success != 3)
     {

@@ -6,6 +6,7 @@ int main()
     char row;
 
     printf("Input chessboard field: ");
+    //NOLINTNEXTLINE(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling) -> Dante doesn't provide *_s
     success = scanf("%c%1d", &row, &col);
 
     if ((success - 2) ||

@@ -3,7 +3,15 @@
 #include <time.h>
 #include <math.h>
 
+#define __MATRIX_ADD__
+#define __MATRIX_SUB__
+#define __MATRIX_NEG__
+#define __MATRIX_PRINT__
 #include "matrix.h"
+#undef __MATRIX_ADD__
+#undef __MATRIX_SUB__
+#undef __MATRIX_NEG__
+#undef __MATRIX_PRINT__
 
 #define eprintf(msg) fprintf(stderr, msg)
 #define _e_exit(eno, msg) { eprintf(msg); return eno; }
@@ -16,15 +24,15 @@ REGISTER_INT_MATRIX(4)
 int main()
 {
     srand((unsigned int)time(NULL));
-    int A[MAT_SIZ][MAT_SIZ] = { 0 };
-    int B[MAT_SIZ][MAT_SIZ] = { 0 };
-    int C[MAT_SIZ][MAT_SIZ] = { 0 };
+    int A[MAT_SIZ][MAT_SIZ] = { { 0 } };
+    int B[MAT_SIZ][MAT_SIZ] = { { 0 } };
+    int C[MAT_SIZ][MAT_SIZ] = { { 0 } };
 
-    int AaB[MAT_SIZ][MAT_SIZ] = { 0 };
-    int AsB[MAT_SIZ][MAT_SIZ] = { 0 };
-    int AaBaC[MAT_SIZ][MAT_SIZ] = { 0 };
-    int AsBsC[MAT_SIZ][MAT_SIZ] = { 0 };
-    int mB[MAT_SIZ][MAT_SIZ] = { 0 };
+    int AaB[MAT_SIZ][MAT_SIZ] = { { 0 } };
+    int AsB[MAT_SIZ][MAT_SIZ] = { { 0 } };
+    int AaBaC[MAT_SIZ][MAT_SIZ] = { { 0 } };
+    int AsBsC[MAT_SIZ][MAT_SIZ] = { { 0 } };
+    int mB[MAT_SIZ][MAT_SIZ] = { { 0 } };
 
     for (size_t r = 0; r < MAT_SIZ; ++r)
     {

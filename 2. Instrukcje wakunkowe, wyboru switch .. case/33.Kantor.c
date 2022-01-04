@@ -9,6 +9,7 @@ int main()
     float amount;
     char currency;
     printf("Enter money amount: ");
+    //NOLINTNEXTLINE(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling) -> Dante doesn't provide *_s
     switch (scanf("%f", &amount) * (amount > 0))
     {
     case 1:
@@ -18,6 +19,7 @@ int main()
         return 1;
     }
     printf("Enter desired currency: ");
+    //NOLINTNEXTLINE(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling) -> Dante doesn't provide *_s
     switch (scanf(" %c", &currency))
     {
     case 1:

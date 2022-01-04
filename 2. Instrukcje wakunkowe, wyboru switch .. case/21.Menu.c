@@ -6,18 +6,21 @@ int main()
     char op;
 
     printf("Input first number: ");
+    //NOLINTNEXTLINE(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling) -> Dante doesn't provide *_s
     if (scanf("%d", &num1) != 1)
     {
         printf("Incorrect input\n");
         return 1;
     }
     printf("Input second number: ");
+    //NOLINTNEXTLINE(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling) -> Dante doesn't provide *_s
     if (scanf("%d", &num2) != 1)
     {
         printf("Incorrect input\n");
         return 1;
     }
     printf("Input operation symbol: ");
+    //NOLINTNEXTLINE(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling) -> Dante doesn't provide *_s
     if (scanf(" %c", &op) != 1 ||
         (op != '+' && op != '-' && op != '*' && op != '/'))
     {

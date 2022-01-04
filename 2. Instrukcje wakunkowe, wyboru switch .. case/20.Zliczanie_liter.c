@@ -4,6 +4,7 @@ int main()
 {
     char let[5];
     printf("Input 5 letters: ");
+    //NOLINTNEXTLINE(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling) -> Dante doesn't provide *_s
     scanf(" %c%c%c%c%c", let, let + 1, let + 2, let + 3, let + 4);
 
     int count = 0;

@@ -6,6 +6,7 @@ int main()
     char op;
 
     printf("Input numbers: ");
+    //NOLINTNEXTLINE(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling) -> Dante doesn't provide *_s
     switch (scanf("%d %d", &num1, &num2))
     {
     case 2:
@@ -15,6 +16,7 @@ int main()
         return 1;
     }
     printf("Input operation symbol: ");
+    //NOLINTNEXTLINE(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling) -> Dante doesn't provide *_s
     switch (scanf(" %c", &op))
     {
     case 1:

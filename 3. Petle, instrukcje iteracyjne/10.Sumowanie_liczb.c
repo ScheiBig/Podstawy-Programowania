@@ -6,6 +6,7 @@ int main()
     for (int i = 0; i < 10; ++i)
     {
         printf("Enter number #%i :", i);
+        //NOLINTNEXTLINE(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling) -> Dante doesn't provide *_s
         if (scanf("%f", &temp) != 1)
         {
             printf("Incorrect input\n");

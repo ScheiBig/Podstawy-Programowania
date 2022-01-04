@@ -21,9 +21,9 @@ REGISTER_INT_MATRIX(4)
 int main()
 {
     srand((unsigned int)time(NULL));
-    int A[MAT_SIZ][MAT_SIZ] = { 0 };
-    int B[MAT_SIZ][MAT_SIZ] = { 0 };
-    int C[MAT_SIZ][MAT_SIZ] = { 0 };
+    int A[MAT_SIZ][MAT_SIZ] = { { 0 } };;
+    int B[MAT_SIZ][MAT_SIZ] = { { 0 } };;
+    int C[MAT_SIZ][MAT_SIZ] = { { 0 } };;
 
     int Ar[MAT_SIZ] = { 0 };
     int Ac[MAT_SIZ] = { 0 };

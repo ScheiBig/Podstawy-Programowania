@@ -11,6 +11,7 @@ int main()
     {
         printf("Input circle radius: ");
         fgets(buffer, sizeof buffer, stdin);
+        //NOLINTNEXTLINE(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling) -> Dante doesn't provide *_s
         radius *= sscanf(buffer, "%f", &radius) == 1;
         if (radius > 1)
         {

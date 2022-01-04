@@ -4,6 +4,7 @@ int main()
 {
     int grade;
     printf("Enter your grade: ");
+    //NOLINTNEXTLINE(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling) -> Dante doesn't provide *_s
     scanf("%d", &grade);
     switch (grade)
     {

@@ -8,6 +8,7 @@ int main()
     float a, b;
 
     printf("Input value a: ");
+    //NOLINTNEXTLINE(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling) -> Dante doesn't provide *_s
     if (scanf("%f", &a) != 1)
     {
         printf("Incorrect input\n");
@@ -15,6 +16,7 @@ int main()
     }
 
     printf("Input value b: ");
+    //NOLINTNEXTLINE(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling) -> Dante doesn't provide *_s
     if (scanf("%f", &b) != 1)
     {
         printf("Incorrect input\n");

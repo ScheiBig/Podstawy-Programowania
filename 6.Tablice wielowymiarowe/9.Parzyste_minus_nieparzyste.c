@@ -7,7 +7,7 @@
 
 int main()
 {
-    int A[MAT_SIZ][MAT_SIZ] = { 0 };
+    int A[MAT_SIZ][MAT_SIZ] = { { 0 } };
 
     printf("Enter a 10x10 matrix:\n");
 
@@ -15,6 +15,7 @@ int main()
     {
         for (size_t c = 0; c < MAT_SIZ; ++c)
         {
+            //NOLINTNEXTLINE(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling) -> Dante doesn't provide *_s
             if (scanf("%d", *(A + r) + c) != 1) _e_exit(1, "Incorrect input\n");
         }
     }

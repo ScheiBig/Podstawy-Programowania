@@ -5,6 +5,7 @@ int main()
     int points;
 
     printf("Input the number of points: ");
+    //NOLINTNEXTLINE(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling) -> Dante doesn't provide *_s
     if (scanf("%d", &points) != 1 || points < 0 || points > 20)
     {
         printf("Incorrect input\n");

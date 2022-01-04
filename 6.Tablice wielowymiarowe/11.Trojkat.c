@@ -10,7 +10,7 @@
 
 int main()
 {
-    int M[MAT_SIZ][MAT_SIZ] = { 0 };
+    int M[MAT_SIZ][MAT_SIZ] = { { 0 } };
     int max = INT_MIN;
     int min = INT_MAX;
     double avg = 0;
@@ -21,6 +21,7 @@ int main()
     {
         for (size_t c = 0; c < MAT_SIZ; ++c)
         {
+            //NOLINTNEXTLINE(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling) -> Dante doesn't provide *_s
             if (scanf("%d", *(M + r) + c) != 1) _e_exit(1, "Incorrect input\n")
                 COND_ASSIGN_L(max, M[r][c]);
             COND_ASSIGN_G(min, M[r][c]);

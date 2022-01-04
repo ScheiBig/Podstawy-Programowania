@@ -17,7 +17,7 @@ REGISTER_INT_MATRIX(15)
 int main()
 {
     srand((unsigned int)time(NULL));
-    int A[MAT_SIZ][MAT_SIZ] = { 0 };
+    int A[MAT_SIZ][MAT_SIZ] = { { 0 } };
 
     printf("Enter a 15x15 matrix:\n");
 
@@ -25,6 +25,7 @@ int main()
     {
         for (size_t c = 0; c < MAT_SIZ; ++c)
         {
+            //NOLINTNEXTLINE(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling) -> Dante doesn't provide *_s
             if (scanf("%d", *(A + r) + c) != 1) _e_exit(1, "Incorrect input\n");
             if (!(R_START <= A[r][c] && A[r][c] < R_END)) _e_exit(2, "Value out of range\n");
         }
@@ -39,7 +40,7 @@ int main()
         }
     }
 
-    int B[MAT_SIZ][MAT_SIZ] = { 0 };
+    int B[MAT_SIZ][MAT_SIZ] = { { 0 } };
     for (size_t r = 0; r < MAT_SIZ; ++r)
     {
         for (size_t c = 0; c < MAT_SIZ; ++c)

@@ -13,9 +13,9 @@
 int main()
 {
     srand((unsigned int)time(NULL));
-    int A[MAT_SIZ][MAT_SIZ] = { 0 };
-    int B[MAT_SIZ][MAT_SIZ] = { 0 };
-    int C[MAT_SIZ][MAT_SIZ] = { 0 };
+    int A[MAT_SIZ][MAT_SIZ] = { { 0 } };
+    int B[MAT_SIZ][MAT_SIZ] = { { 0 } };
+    int C[MAT_SIZ][MAT_SIZ] = { { 0 } };
 
     for (size_t r = 0; r < MAT_SIZ; ++r)
     {

@@ -4,6 +4,7 @@ int main()
 {
     float current, previous;
     printf("Enter first number: ");
+    //NOLINTNEXTLINE(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling) -> Dante doesn't provide *_s
     if (scanf("%f", &previous) != 1)
     {
         printf("Incorrect input");
@@ -14,6 +15,7 @@ int main()
         while (1)
         {
             printf("Enter next number: ");
+            //NOLINTNEXTLINE(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling) -> Dante doesn't provide *_s
             if (scanf("%f", &current) != 1)
             {
                 printf("Incorrect input");

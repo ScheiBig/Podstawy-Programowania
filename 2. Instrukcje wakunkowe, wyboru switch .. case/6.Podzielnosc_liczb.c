@@ -4,6 +4,7 @@ int main()
 {
     int num1, num2, success;
     printf("Input first number: ");
+    //NOLINTNEXTLINE(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling) -> Dante doesn't provide *_s
     success = scanf("%d", &num1);
     if (success - 1)
     {
@@ -11,6 +12,7 @@ int main()
         return 1;
     }
     printf("Input second number: ");
+    //NOLINTNEXTLINE(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling) -> Dante doesn't provide *_s
     success = scanf("%d", &num2);
     if (success - 1)
     {

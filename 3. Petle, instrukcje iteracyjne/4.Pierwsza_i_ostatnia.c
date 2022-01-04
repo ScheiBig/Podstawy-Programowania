@@ -4,6 +4,7 @@ int main()
 {
     unsigned long long number;
     printf("Input your number: ");
+    //NOLINTNEXTLINE(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling) -> Dante doesn't provide *_s
     if (scanf("%llu", &number) != 1)
     {
         printf("Incorrect input");

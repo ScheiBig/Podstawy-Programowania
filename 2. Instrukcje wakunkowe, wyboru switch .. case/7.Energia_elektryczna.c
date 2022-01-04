@@ -21,6 +21,7 @@ int main()
     int kWh, calc, success;
     float sum = 0;
     printf("Input power usage: ");
+    //NOLINTNEXTLINE(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling) -> Dante doesn't provide *_s
     success = scanf("%d", &kWh);
 
     if (success - 1 || kWh < 0)

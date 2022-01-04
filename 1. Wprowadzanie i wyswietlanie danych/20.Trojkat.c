@@ -5,8 +5,10 @@ int main()
 {
     float a, b, c, A, B;
     printf("Insert first side: ");
+    //NOLINTNEXTLINE(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling) -> Dante doesn't provide *_s
     scanf("%f", &a);
     printf("Insert second side: ");
+    //NOLINTNEXTLINE(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling) -> Dante doesn't provide *_s
     scanf("%f", &b);
 
     c = sqrt(a * a + b * b);

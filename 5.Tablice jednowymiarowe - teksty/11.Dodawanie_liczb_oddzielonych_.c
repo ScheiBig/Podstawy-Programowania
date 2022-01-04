@@ -29,6 +29,7 @@ int main()
     {
         if (IS_NUMBER(in_buffer[i]))
         {
+            //NOLINTNEXTLINE(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling) -> Dante doesn't provide *_s
             if (sscanf(in_buffer + i, "%d%n", num_buffer + (num_len++), &offset) != 1)
             {
                 _e_exit(1, "Incorrect input\n");

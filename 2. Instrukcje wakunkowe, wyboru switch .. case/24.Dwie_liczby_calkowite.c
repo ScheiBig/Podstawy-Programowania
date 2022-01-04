@@ -4,6 +4,7 @@ int main()
 {
     int num1, num2, comp;
     printf("Input two numbers: ");
+    //NOLINTNEXTLINE(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling) -> Dante doesn't provide *_s
     switch (scanf("%d %d", &num1, &num2))
     {
     case 2:

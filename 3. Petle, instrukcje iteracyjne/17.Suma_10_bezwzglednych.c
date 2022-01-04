@@ -7,6 +7,7 @@ int main()
     float numbers[10];
     double sum = 0;
     printf("Enter 10 numbers: ");
+    //NOLINTNEXTLINE(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling) -> Dante doesn't provide *_s
     if (scanf("%f %f %f %f %f %f %f %f %f %f", numbers, numbers + 1, numbers + 2, numbers + 3, numbers + 4, numbers + 5,
         numbers + 6, numbers + 7, numbers + 8, numbers + 9) != 10)
     {
