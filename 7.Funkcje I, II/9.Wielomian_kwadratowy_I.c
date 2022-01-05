@@ -7,7 +7,7 @@ float poly(float);
 int main()
 {
     float val1;
-    print_ln("Enter a first number:");
+    print_ln("Enter x argument:");
     //NOLINTNEXTLINE(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling) -> Dante doesn't provide *_s
     if (scanf("%f", &val1) != 1)
     {

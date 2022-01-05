@@ -7,7 +7,7 @@ int compare(int, int, int);
 int main()
 {
     int val1, val2, val3;
-    print_ln("Enter a first number:");
+    print_ln("Enter your numbers:");
     //NOLINTNEXTLINE(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling) -> Dante doesn't provide *_s
     if (scanf("%d-%d-%d", &val1, &val2, &val3) != 3)
     {
