@@ -8,6 +8,7 @@
 #define _e_exit(eno, msg) { eprintf_ln(msg); return eno; }
 #define printf_ln(format, ...) printf(format "\n", __VA_ARGS__)
 #define print_ln(format) printf(format "\n")
+#define print_n() printf("\n")
 
 #define SIGN(num) ((num >> sizeof(num) * 8 - 1) & 0x1)
 #define CLIP_RANGE(in, from, to) ((in % to - from + 1) + from)
