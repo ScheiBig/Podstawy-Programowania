@@ -40,4 +40,10 @@ typedef struct
     int set;
 } coords2d;
 
+typedef struct
+{
+    int a;
+    int b;
+} pair;
+
 #endif //PODSTAWY_PROGRAMOWANIA_1_MY_UTILS_H

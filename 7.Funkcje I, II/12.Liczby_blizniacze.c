@@ -12,13 +12,13 @@ int main()
     int r_st, r_en;
     print_ln("Enter a first number:");
     //NOLINTNEXTLINE(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling) -> Dante doesn't provide *_s
-    if (scanf("%int", &r_st) != 1)
+    if (scanf("%d", &r_st) != 1)
     {
         _e_exit(1, "Incorrect input")
     }
     print_ln("Enter a second number:");
     //NOLINTNEXTLINE(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling) -> Dante doesn't provide *_s
-    if (scanf("%int", &r_en) != 1 || r_en < r_st)
+    if (scanf("%d", &r_en) != 1 || r_en < r_st)
     {
         _e_exit(1, "Incorrect input")
     }
