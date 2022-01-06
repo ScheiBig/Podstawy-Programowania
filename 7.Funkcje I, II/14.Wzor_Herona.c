@@ -24,8 +24,6 @@ int main()
     {
         _e_exit(1, "Incorrect input")
     }
-    // fgets(temp, 15, stdin);
-    // printf_ln("%s, %zu", temp, strlen(temp));
     print_ln("Enter a third point:");
     //NOLINTNEXTLINE(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling) -> Dante doesn't provide *_s
     if (scanf(" (%d, %d)", &val3.x, &val3.y) != 2)
