@@ -1,8 +1,7 @@
 #include <stdio.h>
-#include <stdlib.h>
 #include "my_utils.h"
 
-int even_odd(int s, int n);
+long long binary_exponentiation(long long a, unsigned int n);
 
 int main()
 {
@@ -13,7 +12,7 @@ int main()
     {
         _e_exit(1, "Incorrect input")
     }
-    print_ln("Enter a index:");
+    print_ln("Enter a power:");
     // NOLINTNEXTLINE(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling) -> Dante doesn't provide *_s
     if (scanf("%d", &n) != 1)
     {
@@ -24,20 +23,13 @@ int main()
         _e_exit(2, "Incorrect input data")
     }
 
-    printf_ln("%d", even_odd(a, n));
+    printf_ln("%lld", binary_exponentiation(a, n));
     return 0;
 }
 
-int even_odd(int s, int n)
+long long binary_exponentiation(long long a, unsigned int n)
 {
-    if (n < 0) return -1;
-    else if (n == 0) return s;
-    else
-    {
-        int ret = even_odd(s, n - 1);
-        if (ret % 2 == 0)
-            return ret / 2;
-        else
-            return 3 * ret + 1;
-    }
+    if (n == 0) return 1LL;
+    else if (is_even(n)) return binary_exponentiation(a * a, n / 2);
+    else return a * binary_exponentiation(a * a, (n - 1) / 2);
 }
