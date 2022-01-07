@@ -1,25 +1,23 @@
 #include <stdio.h>
-// #include "my_utils.h"
+#include "my_utils.h"
 
 unsigned long factorial_rec(int n);
 
 int main()
 {
     int n;
-    printf("Enter a number:\n");
+    print_ln("Enter a number:");
     // NOLINTNEXTLINE(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling) -> Dante doesn't provide *_s
     if (scanf("%d", &n) != 1)
     {
-        printf("Incorrect input\n");
-        return 1;
+        _e_exit(1, "Incorrect input");
     }
     else if (0 > n || n > 20)
     {
-        printf("Incorrect input data\n");
-        return 2;
+        _e_exit(2, "Incorrect input data");
     }
 
-    printf("%lu\n", factorial_rec(n));
+    printf_ln("%lu", factorial_rec(n));
 
     return 0;
 }
