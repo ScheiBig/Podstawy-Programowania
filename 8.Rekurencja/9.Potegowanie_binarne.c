@@ -5,10 +5,11 @@ long long binary_exponentiation(long long a, unsigned int n);
 
 int main()
 {
-    int a, n;
+    long long a;
+    int n;
     print_ln("Enter a number:");
     // NOLINTNEXTLINE(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling) -> Dante doesn't provide *_s
-    if (scanf("%d", &a) != 1)
+    if (scanf("%lld", &a) != 1)
     {
         _e_exit(1, "Incorrect input")
     }
