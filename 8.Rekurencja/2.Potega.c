@@ -10,7 +10,7 @@ int main()
     // NOLINTNEXTLINE(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling) -> Dante doesn't provide *_s
     if (scanf("%d", &a) != 1)
     {
-        _e_exit(1, "Incorrect input");
+        _e_exit(1, "Incorrect input")
     }
     print_ln("Enter a power:");
     // NOLINTNEXTLINE(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling) -> Dante doesn't provide *_s
@@ -20,7 +20,7 @@ int main()
     }
     else if (0 > n)
     {
-        _e_exit(2, "Incorrect input data");
+        _e_exit(2, "Incorrect input data")
     }
 
     printf_ln("%ld", power_rec(a, n));

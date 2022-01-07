@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include "my_utils.h"
 
-unsigned long factorial_rec(int n);
+long int fibonacci(int n);
 
 int main()
 {
@@ -12,19 +12,19 @@ int main()
     {
         _e_exit(1, "Incorrect input")
     }
-    else if (0 > n || n > 20)
+    else if (0 > n)
     {
         _e_exit(2, "Incorrect input data")
     }
 
-    printf_ln("%lu", factorial_rec(n));
-
+    printf_ln("%ld", fibonacci(n));
     return 0;
 }
 
-unsigned long factorial_rec(int n)
+long int fibonacci(int n)
 {
-    if (n < 0) return 0;
-    else if (n == 0) return 1;
-    else return n * factorial_rec(n - 1);
+    if (n < 0) return -1;
+    else if (n == 0) return 0;
+    else if (n == 1) return 1;
+    else return fibonacci(n - 1) + fibonacci(n - 2);
 }
