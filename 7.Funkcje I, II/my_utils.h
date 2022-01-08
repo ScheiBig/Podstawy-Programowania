@@ -4,26 +4,29 @@
 // (C) Marcin Jeznach (TM), plz no steal
 
 #include <stdio.h>
-#define eprintf_ln(msg) fprintf(stderr, msg "\n" )
-#define _e_exit(eno, msg) { eprintf_ln(msg); return eno; }
+#define eprint_ln(msg) fprintf(stderr, msg "\n" )
+#define _e_exit(eno, msg) { eprint_ln(msg); return eno; }
 #define printf_ln(format, ...) printf(format "\n", __VA_ARGS__)
 #define print_ln(format) printf(format "\n")
 #define print_n() printf("\n")
 
-#define SIGN(num) ((num >> sizeof(num) * 8 - 1) & 0x1)
-#define CLIP_RANGE(in, from, to) ((in % to - from + 1) + from)
+#define sign(num) ((num >> sizeof(num) * 8 - 1) & 0x1)
+#define clip_range(in, from, to) ((in % to - from + 1) + from)
+#define is_even(num) (num % 2 == 0)
+#define is_odd(num) (num % 2 != 0)
 
-#define A_SIZE(arr) (sizeof(arr) / sizeof(arr[0]))
+#define arr_size(arr) (sizeof(arr) / sizeof(arr[0]))
 
-#define IS_LETTER(chr) ('a' <= chr && chr <= 'z' || 'A' <= chr && chr <= 'Z')
-#define IS_UPPERCASE(chr) ('A' <= chr && chr <= 'Z')
-#define IS_LOWERCASE(chr) ('a' <= chr && chr <= 'z')
-#define IS_NUMBER(chr) ('0' <= chr && chr <= '9')
+#define is_letter(chr) ('a' <= chr && chr <= 'z' || 'A' <= chr && chr <= 'Z')
+#define is_uppercase(chr) ('A' <= chr && chr <= 'Z')
+#define is_lowercase(chr) ('a' <= chr && chr <= 'z')
+#define is_digit(chr) ('0' <= chr && chr <= '9')
+#define ctoi(chr) (chr - '0')
 
-#define COND_ASSIGN_L(to, arg) (to = to < arg ? arg : to)
-#define COND_ASSIGN_LE(to, arg) (to = to <= arg ? arg : to)
-#define COND_ASSIGN_G(to, arg) (to = to > arg ? arg : to)
-#define COND_ASSIGN_GE(to, arg) (to = to >= arg ? arg : to)
+#define cond_assign_l(to, arg) (to = to < arg ? arg : to)
+#define cond_assign_le(to, arg) (to = to <= arg ? arg : to)
+#define cond_assign_g(to, arg) (to = to > arg ? arg : to)
+#define cond_assign_ge(to, arg) (to = to >= arg ? arg : to)
 
 #define REGISTER_SWAP(type) \
     void swap_int(type* a1, type* a2)\

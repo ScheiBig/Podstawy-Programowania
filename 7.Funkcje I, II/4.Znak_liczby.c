@@ -2,6 +2,8 @@
 #include "my_utils.h"
 #include <math.h>
 
+#undef sign
+
 int sign(int value);
 
 enum sign
