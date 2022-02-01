@@ -1,9 +1,8 @@
 #pragma once
 
-enum direction
-{
-    ASCENDING = 1, DESCENDING = 2
-};
+#include "types_utils.h"
+
+int sort(int tab[], int size, enum direction dir, enum algorithm alg);
 
 int bubble_sort_asc(int tab[], int size);
 int bubble_sort_desc(int tab[], int size);

@@ -5,6 +5,24 @@
 
 REGISTER_SWAP(int)
 
+int sort(int tab[], int size, enum direction dir, enum algorithm alg)
+{
+    if (size < 1) return 1;
+    if (size == 1)
+    {
+        display_vector(tab, size);
+        return 0;
+    }
+
+    switch ((int)alg)
+    {
+    case BUBBLE_SORT: return bubble_sort(tab, size, dir);
+    case SELECTION_SORT: return selection_sort(tab, size, dir);
+    case INSERTION_SORT: return insertion_sort(tab, size, dir);
+    }
+    return 1;
+}
+
 int bubble_sort(int tab[], int size, enum direction dir)
 {
     if (size < 1) return 1;
@@ -37,7 +55,7 @@ int bubble_sort_asc(int tab[], int size)
         {
             if (tab[j] > tab[j + 1])
             {
-                swap_int(tab + j, tab + i);
+                swap_int(tab + j, tab + (j + 1));
                 ++mov;
             }
         }
@@ -63,7 +81,7 @@ int bubble_sort_desc(int tab[], int size)
         {
             if (tab[j] < tab[j + 1])
             {
-                swap_int(tab + j, tab + i);
+                swap_int(tab + j, tab + (j + 1));
                 ++mov;
             }
         }
