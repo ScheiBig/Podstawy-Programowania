@@ -36,7 +36,6 @@ int bsr_asc_loop(int tab[], int size, int cur)
 
 int bubble_sort_asc_rec(int tab[], int size)
 {
-
     if (size < 1) return 1;
     if (size == 1)
     {
@@ -63,7 +62,6 @@ int bsr_desc_loop(int tab[], int size, int cur)
 
 int bubble_sort_desc_rec(int tab[], int size)
 {
-
     if (size < 1) return 1;
     if (size == 1)
     {
