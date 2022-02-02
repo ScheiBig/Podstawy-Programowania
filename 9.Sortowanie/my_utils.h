@@ -28,6 +28,8 @@
 #define cond_assign_g(to, arg) (to = to > arg ? arg : to)
 #define cond_assign_ge(to, arg) (to = to >= arg ? arg : to)
 #define double_almost_eq(arg, to, eps) ((to - eps) < arg && arg < (to + eps))
+#define min(a, b) (a < b ? a : b)
+#define max(a, b) (a > b ? a : b)
 
 #define REGISTER_SWAP(type) \
     void swap_int(type* a1, type* a2)\
