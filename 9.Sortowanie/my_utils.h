@@ -1,5 +1,4 @@
-#ifndef PODSTAWY_PROGRAMOWANIA_1_MY_UTILS_H
-#define PODSTAWY_PROGRAMOWANIA_1_MY_UTILS_H
+#pragma once
 
 // (C) Marcin Jeznach (TM), plz no steal
 
@@ -39,4 +38,3 @@
         *a2 = temp;\
     }\
 
-#endif //PODSTAWY_PROGRAMOWANIA_1_MY_UTILS_H
