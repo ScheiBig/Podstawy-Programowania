@@ -31,10 +31,9 @@
 #define max(a, b) (a > b ? a : b)
 
 #define REGISTER_SWAP(type) \
-    void swap_int(type* a1, type* a2)\
+    void swap_##type(type* a1, type* a2)\
     {\
         type temp = *a1;\
         *a1 = *a2;\
         *a2 = temp;\
-    }\
-
+    }
