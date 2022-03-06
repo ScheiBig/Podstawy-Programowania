@@ -13,10 +13,13 @@
 
 #include <stdio.h>
 #define eprint_ln(msg) fprintf(stderr, msg "\n" )
-#define _e_exit(eno, msg) { eprint_ln(msg); return eno; }
 #define printf_ln(format, ...) printf(format "\n", __VA_ARGS__)
 #define print_ln(format) printf(format "\n")
 #define print_n() printf("\n")
+#define _el_exit(eno, msg) { eprint_ln(msg); return eno; }
+#define _ml_exit(eno, msg) { print_ln(msg); return eno; }
+#define _e_exit(eno, msg) { fprint(msg, stderr); return eno; }
+#define _m_exit(eno, msg) { printf(msg); return eno; }
 
 #define sign(num) ((num >> sizeof(num) * 8 - 1) & 0x1)
 #define clip_range(in, from, to) ((in % to - from + 1) + from)
