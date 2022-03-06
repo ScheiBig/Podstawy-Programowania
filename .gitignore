@@ -1,10 +1,18 @@
 # Ignore everything
-*/*
+/*
+!/PP1/
+!/PP2/
 
-# Unignore source files in subdirectories
-!*/*.c
-!*/*.h
+/PP1/*.c
+/PP1/*.h
+/PP1/[!1-9]*
+/PP2/*.c
+/PP2/*.h
+/PP2/[!1-9]*
 
-# Ignore source files in main directory
-/*.c
-/*.h
+!/PP1/[1-9]*/*.c
+!/PP1/[1-9]*/*.h
+!/PP2/[1-9]*/*.c
+!/PP2/[1-9]*/*.h
+
+!.gitignore

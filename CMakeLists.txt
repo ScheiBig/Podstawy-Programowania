@@ -10,6 +10,11 @@ add_compile_options(
       "-ferror-limit=16"
 )
 
-add_executable(Podstawy_Programowania_1 workspace.c vector_utils.c)
+# add_executable(Podstawy_Programowania_1 
+# workspace.c 
+# vector_utils.c
+# )
+
+add_executable(Podstawy_Programowania_1 workspace_copy.c)
 
 target_link_libraries(Podstawy_Programowania_1 m) # I f🤬kin' hate *nix
