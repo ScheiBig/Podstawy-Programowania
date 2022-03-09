@@ -2,6 +2,8 @@
 
 // (C) Marcin Jeznach (TM), plz no steal
 
+#define eFILE_cantcreate 5
+#define eFILE_cantcreate_msg "Couldn't create file"
 #define eFILE_noaccess 4
 #define eFILE_noaccess_msg "Couldn't open file"
 #define eDATA_none 3
@@ -49,3 +51,17 @@
         *a1 = *a2;\
         *a2 = temp;\
     }
+
+#ifdef __discard_stdin__
+/**
+ * @brief Clears `stdin` until newline character is met.
+ * 
+ * @return Number of characters left in `stdin` prior to this call. 
+ */
+int discard_stdin()
+{
+    int count = 0;
+    while (fgetc(stdin) != '\n') ++count;
+    return count;
+}
+#endif
