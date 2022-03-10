@@ -2,6 +2,8 @@
 
 // (C) Marcin Jeznach (TM), plz no steal
 
+#define eFILE_corrupted 6
+#define eFILE_corrupted_msg "File corrupted"
 #define eFILE_cantcreate 5
 #define eFILE_cantcreate_msg "Couldn't create file"
 #define eFILE_noaccess 4
