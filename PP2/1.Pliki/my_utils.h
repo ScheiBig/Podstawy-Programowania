@@ -20,11 +20,11 @@
 #define print_n() printf("\n")
 #define _el_exit(eno, msg) { eprint_ln(msg); return eno; }
 #define _ml_exit(eno, msg) { print_ln(msg); return eno; }
-#define _e_exit(eno, msg) { fprint(msg, stderr); return eno; }
+#define _e_exit(eno, msg) { fprintf(stderr, msg); return eno; }
 #define _m_exit(eno, msg) { printf(msg); return eno; }
 
 #define sign(num) ((num >> sizeof(num) * 8 - 1) & 0x1)
-#define clip_range(in, from, to) ((in % to - from + 1) + from)
+#define clip_range(in, from, to) (in % (to - from + 1) + from)
 #define is_even(num) (num % 2 == 0)
 #define is_odd(num) (num % 2 != 0)
 

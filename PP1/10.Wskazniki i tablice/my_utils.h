@@ -10,7 +10,7 @@
 #define print_n() printf("\n")
 
 #define sign(num) ((num >> sizeof(num) * 8 - 1) & 0x1)
-#define clip_range(in, from, to) ((in % to - from + 1) + from)
+#define clip_range(in, from, to) (in % (to - from + 1) + from)
 #define is_even(num) (num % 2 == 0)
 #define is_odd(num) (num % 2 != 0)
 

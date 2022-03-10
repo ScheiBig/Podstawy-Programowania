@@ -29,6 +29,6 @@ void process_exit_handlers(void);
 
 #define _elh_exit(eno, msg) { eprint_ln(msg); process_exit_handlers(); return eno; }
 #define _mlh_exit(eno, msg) { print_ln(msg); process_exit_handlers(); return eno; }
-#define _eh_exit(eno, msg) { fprint(msg, stderr); process_exit_handlers(); return eno; }
+#define _eh_exit(eno, msg) { fprintf(stderr, msg); process_exit_handlers(); return eno; }
 #define _mh_exit(eno, msg) { printf(msg); process_exit_handlers(); return eno; }
 #define _h_exit() { process_exit_handlers(); return 0; }

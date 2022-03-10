@@ -9,7 +9,7 @@
 #define printf_ln(format, ...) printf(format "\n", __VA_ARGS__)
 
 #define SIGN(num) ((num >> sizeof(num) * 8 - 1) & 0x1)
-#define CLIP_RANGE(in, from, to) ((in % to - from + 1) + from)
+#define CLIP_RANGE(in, from, to) (in % (to - from + 1) + from)
 
 #define A_SIZE(arr) (sizeof(arr) / sizeof(arr[0]))
 
