@@ -18,7 +18,7 @@ int main()
     //NOLINTNEXTLINE(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling) -> Dante doesn't provide *_s
     if (scanf("%30s", buffer) != 1)
     {
-        _mh_exit(eFILE_noaccess, eFILE_noaccess_msg)
+        _mh_exit(eFILE_cantcreate, eFILE_cantcreate_msg)
     }
     discard_stdin();
 
@@ -26,26 +26,39 @@ int main()
     FILE* file = register_file_pointer(fopen(buffer, "r"));
     if (file == NULL)
     {
-        _mh_exit(eFILE_noaccess, eFILE_noaccess_msg);
+        _mh_exit(eFILE_noaccess, eFILE_noaccess_msg)
     }
 
     long sum = 0;
+    long count;
     long num;
-    while (true)
+    //NOLINTNEXTLINE(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling) -> Dante doesn't provide *_s
+    switch (fscanf(file, "%ld", &count))
+    {
+    case EOF: _mh_exit(eFILE_corrupted, eFILE_corrupted_msg)
+    case 1: break;
+    default: _mh_exit(eFILE_corrupted, eFILE_corrupted_msg)
+    }
+    if (count <= 0)
+    {
+        _mh_exit(eFILE_corrupted, eFILE_corrupted_msg)
+    }
+    for (long i = 0; i < count; ++i)
     {
         //NOLINTNEXTLINE(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling) -> Dante doesn't provide *_s
         switch (fscanf(file, "%ld", &num))
         {
-        case EOF:goto break_while;
+        case EOF: _mh_exit(eFILE_corrupted, eFILE_corrupted_msg)
         case 1: {
             sum += num;
             break;
         }
-        default:_mh_exit(eFILE_corrupted, eFILE_corrupted_msg)
+        default: _mh_exit(eFILE_corrupted, eFILE_corrupted_msg)
         }
     }
-break_while: {}
-    
+    double avg = sum / (double)count;
+
     printf_ln("%ld", sum);
+    printf_ln("%lf", avg);
     _h_exit()
 }
