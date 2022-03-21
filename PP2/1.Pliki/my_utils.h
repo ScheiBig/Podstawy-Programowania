@@ -2,6 +2,8 @@
 
 // (C) Marcin Jeznach (TM), plz no steal
 
+#define eFILE_unsupported 7
+#define eFILE_unsupported_msg "Unsupported file format"
 #define eFILE_corrupted 6
 #define eFILE_corrupted_msg "File corrupted"
 #define eFILE_cantcreate 5
