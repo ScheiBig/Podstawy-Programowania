@@ -3,7 +3,6 @@
 #include <string.h>
 #include <stdbool.h>
 #include <math.h>
-#include <time.h>
 
 #define __discard_stdin__
 #include "my_utils.h"
@@ -15,26 +14,34 @@ int main()
     register_exit_handler(close_file_pointers);
     char buffer[31];
 
-    print_ln("Enter input file path:");
+    print_ln("Enter file path:");
     //NOLINTNEXTLINE(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling) -> Dante doesn't provide *_s
     if (scanf("%30s", buffer) != 1)
     {
-        _mh_exit(eFILE_noaccess, eFILE_noaccess_msg)
+        printf("COULDN'T OPEN FILE");
+        _nh_exit(eFILE_noaccess)
     }
+    discard_stdin();
     FILE* in_file = register_file_pointer(fopen(buffer, "r"));
     if (in_file == NULL)
     {
-        _mh_exit(eFILE_noaccess, eFILE_noaccess_msg)
+        printf("COULDN'T OPEN FILE");
+        _nh_exit(eFILE_noaccess)
     }
-    discard_stdin();
 
-    unsigned char buff_char;
-
-    while (fread(&buff_char, sizeof(buff_char), 1, in_file))
+    char buf_char;
+    if ((buf_char = fgetc(in_file)) == EOF)
     {
-        printf("%u ", buff_char);
+        printf("NOTHING TO SHOW");
+    }
+    else
+    {
+        fputc(to_uppercase(buf_char), stdout);
+        while ((buf_char = fgetc(in_file)) != EOF)
+        {
+            fputc(to_uppercase(buf_char), stdout);
+        }
     }
 
-    print_ln("File saved");
     _h_exit()
 }

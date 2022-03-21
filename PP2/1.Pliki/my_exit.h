@@ -32,3 +32,4 @@ void process_exit_handlers(void);
 #define _eh_exit(eno, msg) { fprintf(stderr, msg); process_exit_handlers(); return eno; }
 #define _mh_exit(eno, msg) { printf(msg); process_exit_handlers(); return eno; }
 #define _h_exit() { process_exit_handlers(); return 0; }
+#define _nh_exit(eno) { process_exit_handlers(); return eno; }

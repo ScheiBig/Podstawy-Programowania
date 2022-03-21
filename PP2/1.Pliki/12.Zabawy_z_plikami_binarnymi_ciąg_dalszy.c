@@ -10,8 +10,6 @@
 #include "my_exit.h"
 #include "my_file.h"
 
-#include <errno.h>
-
 int main()
 {
     register_exit_handler(close_file_pointers);
