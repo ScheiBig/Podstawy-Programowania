@@ -51,6 +51,7 @@
 #define to_lowercase(chr) (is_uppercase(chr) ? (chr - 'A' + 'a') : chr)
 #define is_digit(chr) ('0' <= chr && chr <= '9')
 #define ctoi(chr) (chr - '0')
+#define str_term (char)0
 
 #define cond_assign_l(to, arg) (to = to < arg ? arg : to)
 #define cond_assign_le(to, arg) (to = to <= arg ? arg : to)

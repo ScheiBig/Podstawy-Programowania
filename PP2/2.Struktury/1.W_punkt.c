@@ -23,8 +23,8 @@ typedef struct point_t point;
 int main()
 {
     srand(time(NULL));
-    struct point p1;
-    struct point p2;
+    struct point_t p1;
+    struct point_t p2;
 
     if (read(&p1) == NULL)
     {
