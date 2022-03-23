@@ -49,6 +49,7 @@
 #define is_lowercase(chr) ('a' <= chr && chr <= 'z')
 #define to_uppercase(chr) (is_lowercase(chr) ? (chr - 'a' + 'A') : chr)
 #define to_lowercase(chr) (is_uppercase(chr) ? (chr - 'A' + 'a') : chr)
+#define is_vovel(chr) (chr == 'a' || chr == 'e' || chr == 'i' || chr == 'o' || chr == 'u' || chr == 'A' || chr == 'E' || chr == 'I' || chr == 'O' || chr == 'U')
 #define is_digit(chr) ('0' <= chr && chr <= '9')
 #define ctoi(chr) (chr - '0')
 #define str_term (char)0
