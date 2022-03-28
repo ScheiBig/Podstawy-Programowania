@@ -75,9 +75,10 @@
 /**
  * @brief Clears `stdin` until newline character is met.
  *
+ * Requires `#include <string.h>`
  * @return Number of characters left in `stdin` prior to this call.
  */
-int discard_stdin()
+    int discard_stdin()
 {
     int count = 0;
     while (fgetc(stdin) != '\n') ++count;
@@ -86,8 +87,8 @@ int discard_stdin()
 #endif
 
 #ifdef __string_prepend__
-#include <string.h>
 /**
+ *
  * @brief Inserts character in front of string
  *
  * @return Pointer to passed string (modified)
@@ -101,5 +102,34 @@ char* string_prepend(char* string, char prefix)
     }
     *(string) = prefix;
     return string;
+}
+#endif
+
+#ifdef __string_endswith__
+/**
+ * @brief Checks if string ends with substring
+ */
+int string_endswith(const char* str, const char* end)
+{
+    if (str == NULL || end == NULL)
+    {
+        return -1;
+    }
+    size_t str_l = strlen(str);
+    size_t end_l = strlen(end);
+    if (str_l < end_l)
+    {
+        return -1;
+    }
+    int ret = 1;
+    const char* s = str + str_l - end_l;
+
+    for (size_t e = 0; e < end_l; ++e)
+    {
+        ret *= (*(s + e) == *(end + e));
+    }
+    if (ret) return 1;
+
+    return 0;
 }
 #endif

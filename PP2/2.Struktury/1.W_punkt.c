@@ -18,7 +18,6 @@ struct point_t* set(struct point_t* p, int x, int y);
 void show(const struct point_t* p);
 float distance(const struct point_t* p1, const struct point_t* p2, int* err_code);
 
-typedef struct point_t point;
 
 int main()
 {
