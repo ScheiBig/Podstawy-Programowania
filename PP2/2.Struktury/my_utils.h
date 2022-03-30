@@ -42,6 +42,8 @@
 #define is_even(num) (num % 2 == 0)
 #define is_odd(num) (num % 2 != 0)
 
+ // #define arr_size(arr) (sizeof(arr) / sizeof(arr[0]))
+
 #define is_letter(chr) ('a' <= chr && chr <= 'z' || 'A' <= chr && chr <= 'Z')
 #define is_uppercase(chr) ('A' <= chr && chr <= 'Z')
 #define is_lowercase(chr) ('a' <= chr && chr <= 'z')
@@ -69,7 +71,7 @@
         *a2 = temp;\
     }
 
-typedef unsigned char u_char;
+#define null NULL
 
 #ifdef __discard_stdin__
 /**
@@ -78,7 +80,7 @@ typedef unsigned char u_char;
  * Requires `#include <string.h>`
  * @return Number of characters left in `stdin` prior to this call.
  */
-int discard_stdin()
+    int discard_stdin()
 {
     int count = 0;
     while (fgetc(stdin) != '\n') ++count;
