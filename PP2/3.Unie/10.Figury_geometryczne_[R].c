@@ -5,7 +5,7 @@
 #include <math.h>
 #include <time.h>
 
-#include "my_utils.h"
+#include "my_utils_v2.h"
 
 struct point_t
 {
@@ -74,7 +74,7 @@ int main()
         //NOLINTNEXTLINE(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling) -> Dante doesn't provide *_s
         if (scanf("%d", &fig_choice) != 1)
         {
-            _m_exit(eINPUT_invalid, eINPUT_invalid_msg)
+            __m_exit(eINPUT_invalid);
         }
         switch (fig_choice)
         {
@@ -85,7 +85,7 @@ int main()
             if (scanf("%d %d %d %d %d %d", &f->triangle.p1.x, &f->triangle.p1.y,
                 &f->triangle.p2.x, &f->triangle.p2.y, &f->triangle.p3.x, &f->triangle.p3.y) != 6)
             {
-                _m_exit(eINPUT_invalid, eINPUT_invalid_msg)
+                __m_exit(eINPUT_invalid);
             }
             break;
         case RECTANGLE:
@@ -93,7 +93,7 @@ int main()
             //NOLINTNEXTLINE(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling) -> Dante doesn't provide *_s
             if (scanf("%d %d %d %d", &f->rect.p.x, &f->rect.p.y, &f->rect.width, &f->rect.height) != 4)
             {
-                _m_exit(eINPUT_invalid, eINPUT_invalid_msg)
+                __m_exit(eINPUT_invalid);
             }
             break;
         case CIRCLE:
@@ -101,11 +101,11 @@ int main()
             //NOLINTNEXTLINE(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling) -> Dante doesn't provide *_s
             if (scanf("%d %d %f", &f->circ.c.x, &f->circ.c.y, &f->circ.r) != 3)
             {
-                _m_exit(eINPUT_invalid, eINPUT_invalid_msg)
+                __m_exit(eINPUT_invalid);
             }
             break;
         default:
-            _m_exit(eDATA_invalid, eDATA_invalid_msg)
+            __m_exit(eDATA_invalid);
         }
         f->type = (enum figure_types)fig_choice;
     }
@@ -115,7 +115,7 @@ break_for: {}
     {
         if (double_almost_eq(area_figure(figures + i), -1, 0.000005))
         {
-            _m_exit(eDATA_invalid, eDATA_invalid_msg)
+            __m_exit(eDATA_invalid);
         }
         *(figs + i) = figures + i;
     }

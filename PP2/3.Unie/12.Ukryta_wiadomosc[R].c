@@ -5,8 +5,8 @@
 #include <math.h>
 #include <time.h>
 
-#define __discard_stdin__
-#include "my_utils.h"
+#include "my_utils_v2.h"
+__include__discard_stdin()
 
 typedef union
 {
@@ -50,11 +50,11 @@ int main()
         switch (encode(pi_buffer, m_buffer, po_buffer))
         {
         case 4:
-            _m_exit(eFILE_cantcreate, eFILE_cantcreate_msg)
+            __m_exit(eFILE_cantcreate);
         case 3:
-            _m_exit(eFILE_corrupted, eFILE_corrupted_msg)
+            __m_exit(eFILE_corrupted);
         case 2:
-            _m_exit(eFILE_noaccess,eFILE_noaccess_msg)
+            __m_exit(eFILE_noaccess);
         default:
             print_ln("File saved");
             break;
@@ -69,16 +69,16 @@ int main()
         switch (decode(pi_buffer, m_buffer, 1001))
         {
         case 3:
-            _m_exit(eFILE_corrupted, eFILE_corrupted_msg)
+            __m_exit(eFILE_corrupted);
         case 2:
-            _m_exit(eFILE_noaccess, eFILE_noaccess_msg)
+            __m_exit(eFILE_noaccess);
         default:
             printf("%s", m_buffer);
             break;
         }
         break;
     default:
-        _m_exit(eINPUT_invalid, eDATA_invalid_msg)
+        _m_exit(eINPUT_invalid_eno, eDATA_invalid);
     }
 
     return 0;
