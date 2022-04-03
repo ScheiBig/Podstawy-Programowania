@@ -5,9 +5,8 @@
 #include <math.h>
 #include <time.h>
 
-// #define __discard_stdin__
-#define __string_prepend__
-#include "my_utils.h"
+#include "my_utils_v2.h"
+__include__string_prepend()
 #include "my_exit.h"
 #include "my_file.h"
 
@@ -20,7 +19,7 @@ int main()
     //NOLINTNEXTLINE(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling) -> Dante doesn't provide *_s
     if (scanf("%30s", buffer) != 1)
     {
-        _mh_exit(eFILE_noaccess, eFILE_noaccess_msg)
+        _mh_exit(eFILE_noaccess_eno, eFILE_noaccess)
     }
     int last = strlen(buffer) - 1;
 
@@ -31,14 +30,14 @@ int main()
         *(buffer + last - 3) != '.'
         )
     {
-        _mh_exit(eFILE_unsupported, eFILE_unsupported_msg)
+        _mh_exit(eFILE_unsupported_eno, eFILE_unsupported)
     }
 
     
     FILE* in_file = register_file_pointer(fopen(buffer, "rb"));
     if (in_file == NULL)
     {
-        _mh_exit(eFILE_noaccess, eFILE_noaccess_msg)
+        _mh_exit(eFILE_noaccess_eno, eFILE_noaccess)
     }
 
     string_prepend(buffer, '_');
@@ -50,7 +49,7 @@ int main()
     FILE* out_file = register_file_pointer(fopen(buffer, "wb"));
     if (out_file == NULL)
     {
-        _mh_exit(eFILE_cantcreate, eFILE_cantcreate_msg)
+        _mh_exit(eFILE_cantcreate_eno, eFILE_cantcreate)
     }
 
     char buf_char = 0;

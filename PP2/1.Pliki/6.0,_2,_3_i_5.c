@@ -4,7 +4,7 @@
 #include <stdbool.h>
 #include <math.h>
 
-#include "my_utils.h"
+#include "my_utils_v2.h"
 #include "my_exit.h"
 #include "my_file.h"
 
@@ -14,22 +14,22 @@ int main()
     FILE* file_0 = register_file_pointer(fopen("0.txt", "w"));
     if (file_0 == NULL)
     {
-        _mh_exit(eFILE_cantcreate, eFILE_cantcreate_msg)
+        _mh_exit(eFILE_cantcreate_eno, eFILE_cantcreate)
     }
     FILE* file_2 = register_file_pointer(fopen("2.txt", "w"));
     if (file_2 == NULL)
     {
-        _mh_exit(eFILE_cantcreate, eFILE_cantcreate_msg)
+        _mh_exit(eFILE_cantcreate_eno, eFILE_cantcreate)
     }
     FILE* file_3 = register_file_pointer(fopen("3.txt", "w"));
     if (file_3 == NULL)
     {
-        _mh_exit(eFILE_cantcreate, eFILE_cantcreate_msg)
+        _mh_exit(eFILE_cantcreate_eno, eFILE_cantcreate)
     }
     FILE* file_5 = register_file_pointer(fopen("5.txt", "w"));
-    if (file_5    == NULL)
+    if (file_5 == NULL)
     {
-        _mh_exit(eFILE_cantcreate, eFILE_cantcreate_msg)
+        _mh_exit(eFILE_cantcreate_eno, eFILE_cantcreate)
     }
 
     print_ln("Enter numbers");
@@ -40,7 +40,7 @@ int main()
         //NOLINTNEXTLINE(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling) -> Dante doesn't provide *_s
         if (scanf(" %d", &number) != 1)
         {
-            _eh_exit(eINPUT_invalid, eINPUT_invalid_msg)
+            _eh_exit(eINPUT_invalid_eno, eINPUT_invalid)
         }
         else if (number == 0)
         {
@@ -70,7 +70,7 @@ int main()
             }
         }
     }
-    
+
     print_ln("Files saved");
     _h_exit()
 }

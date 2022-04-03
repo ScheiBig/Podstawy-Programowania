@@ -5,7 +5,7 @@
 #include <math.h>
 #include <time.h>
 
-#include "my_utils.h"
+#include "my_utils_v2.h"
 
 int read_file(const char* filename);
 
@@ -16,7 +16,7 @@ int main()
     //NOLINTNEXTLINE(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling) -> Dante doesn't provide *_s
     if (scanf("%30s", buffer) != 1)
     {
-        _m_exit(eFILE_noaccess, eFILE_noaccess_msg)
+        _m_exit(eFILE_noaccess_eno, eFILE_noaccess);
     }
     int file_count = read_file(buffer);
     if (file_count  > 0)
@@ -25,7 +25,7 @@ int main()
     }
     else
     {
-        _m_exit(eFILE_noaccess, eFILE_noaccess_msg)
+        _m_exit(eFILE_noaccess_eno, eFILE_noaccess);
     }
 
     return 0;
@@ -42,13 +42,13 @@ int read_file(const char* filename)
     FILE* file;
     if ((file = fopen(filename, "r")) == NULL)
     {
-        return file_count;
+        return (signed)file_count;
     }
     u_int buf_last;
     int cur_count;
     while (fgets(buffer, 31, file) != NULL)
     {
-        buf_last = strlen(buffer) - 1;
+        buf_last = strlen(buffer) - 1u;
         if (*(buffer + buf_last) == '\n')
         {
             *(buffer + buf_last) = str_term;
@@ -56,9 +56,9 @@ int read_file(const char* filename)
         printf_ln("%s", buffer);
         if ((cur_count = read_file(buffer)) != -1)
         {
-            file_count += cur_count;
+            file_count += (unsigned)cur_count;
         }
     }
     fclose(file);
-    return file_count + 1;
+    return (signed)file_count + 1;
 }

@@ -5,10 +5,10 @@
 #include <math.h>
 #include <time.h>
 
-// #define __discard_stdin__
-#include "my_utils.h"
+#include "my_utils_v2.h"
 #include "my_exit.h"
 #include "my_file.h"
+
 int main()
 {
     register_exit_handler(close_file_pointers);
@@ -18,7 +18,7 @@ int main()
     //NOLINTNEXTLINE(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling) -> Dante doesn't provide *_s
     if (scanf("%30s", buffer) != 1)
     {
-        _mh_exit(eFILE_noaccess, eFILE_noaccess_msg)
+        _mh_exit(eFILE_noaccess_eno, eFILE_noaccess)
     }
 
     if (register_file_pointer(fopen(buffer, "r")))
@@ -33,7 +33,7 @@ int main()
         }
         else
         {
-            _mh_exit(eFILE_cantcreate, eFILE_cantcreate_msg)
+            _mh_exit(eFILE_cantcreate_eno, eFILE_cantcreate)
         }
     }
 

@@ -4,8 +4,8 @@
 #include <stdbool.h>
 #include <math.h>
 
-#define __discard_stdin__
-#include "my_utils.h"
+#include "my_utils_v2.h"
+__include__discard_stdin()
 #include "my_exit.h"
 #include "my_file.h"
 
@@ -19,17 +19,17 @@ int main()
     if (scanf("%30s", buffer) != 1)
     {
         printf("COULDN'T OPEN FILE");
-        _nh_exit(eFILE_noaccess)
+        _nh_exit(eFILE_noaccess_eno)
     }
     discard_stdin();
     FILE* in_file = register_file_pointer(fopen(buffer, "r"));
     if (in_file == NULL)
     {
         printf("COULDN'T OPEN FILE");
-        _nh_exit(eFILE_noaccess)
+        _nh_exit(eFILE_noaccess_eno)
     }
 
-    char buf_char;
+    int buf_char;
     if ((buf_char = fgetc(in_file)) == EOF)
     {
         printf("NOTHING TO SHOW");
