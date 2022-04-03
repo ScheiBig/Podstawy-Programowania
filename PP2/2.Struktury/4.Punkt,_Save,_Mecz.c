@@ -5,8 +5,8 @@
 #include <math.h>
 #include <time.h>
 
-#define __string_endswith__
-#include "my_utils.h"
+#include "my_utils_v2.h"
+__include__string_endswith()
 
 struct point_t
 {
@@ -36,20 +36,21 @@ int main()
     //NOLINTNEXTLINE(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling) -> Dante doesn't provide *_s
     if (scanf("%30s", buffer) != 1)
     {
-        _m_exit(eFILE_cantcreate, eFILE_cantcreate_msg)
+        __m_exit(eFILE_cantcreate);
     }
 
     if (string_endswith(buffer, ".bin"))
     {
         if (save_point_b(buffer, &p1) != 0)
         {
-            _m_exit(eFILE_cantcreate, eFILE_cantcreate_msg)
+            __m_exit(eFILE_cantcreate);
         }
         print_ln("File saved");
         print_ln("Do you want to read the file (Y/N): ");
+        //NOLINTNEXTLINE(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling) -> Dante doesn't provide *_s
         if (scanf("%*c%c", &answer) != 1)
         {
-            _m_exit(eINPUT_invalid, eINPUT_invalid_msg)
+            __m_exit(eINPUT_invalid);
         }
         if (answer == 'n' || answer == 'N')
         {
@@ -61,10 +62,10 @@ int main()
             switch (load_point_b(buffer, &p2))
             {
             case 1: case 3: {
-                _m_exit(eFILE_corrupted, eFILE_corrupted_msg)
+                __m_exit(eFILE_corrupted);
             }
             case 2: {
-                _m_exit(eFILE_noaccess, eFILE_noaccess_msg)
+                __m_exit(eFILE_noaccess);
             }
             default: {
                 show(&p2);
@@ -74,20 +75,21 @@ int main()
         }
         else
         {
-            _m_exit(eINPUT_invalid, eINPUT_invalid_msg)
+            __m_exit(eINPUT_invalid);
         }
     }
     else if (string_endswith(buffer, ".txt"))
     {
         if (save_point_t(buffer, &p1) != 0)
         {
-            _m_exit(eFILE_cantcreate, eFILE_cantcreate_msg)
+            __m_exit(eFILE_cantcreate);
         }
         print_ln("File saved");
         print_ln("Do you want to read the file (Y/N): ");
+        //NOLINTNEXTLINE(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling) -> Dante doesn't provide *_s
         if (scanf("%*c%c", &answer) != 1)
         {
-            _m_exit(eINPUT_invalid, eINPUT_invalid_msg)
+            __m_exit(eINPUT_invalid);
         }
         if (answer == 'n' || answer == 'N')
         {
@@ -99,10 +101,10 @@ int main()
             switch (load_point_t(buffer, &p2))
             {
             case 1: case 3: {
-                _m_exit(eFILE_corrupted, eFILE_corrupted_msg)
+                __m_exit(eFILE_corrupted);
             }
             case 2: {
-                _m_exit(eFILE_noaccess, eFILE_noaccess_msg)
+                __m_exit(eFILE_noaccess);
             }
             default: {
                 show(&p2);
@@ -112,12 +114,12 @@ int main()
         }
         else
         {
-            _m_exit(eINPUT_invalid, eINPUT_invalid_msg)
+            __m_exit(eINPUT_invalid);
         }
     }
     else
     {
-        _m_exit(eFILE_unsupported, eFILE_unsupported_msg)
+        __m_exit(eFILE_unsupported);
     }
 }
 
@@ -211,6 +213,7 @@ int load_point_t(const char* filename, struct point_t* p)
     {
         return 2;
     }
+    //NOLINTNEXTLINE(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling) -> Dante doesn't provide *_s
     if (fscanf(in_file, "%d %d", &p->x, &p->y) != 2)
     {
         fclose(in_file);

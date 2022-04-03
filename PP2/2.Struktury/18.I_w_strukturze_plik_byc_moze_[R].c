@@ -5,8 +5,8 @@
 #include <math.h>
 #include <time.h>
 
-#define __discard_stdin__
-#include "my_utils.h"
+#include "my_utils_v2.h"
+__include__discard_stdin()
 
 struct file_t
 {
@@ -61,7 +61,7 @@ int main()
     }
     if (file_no == 0)
     {
-        _m_exit(eFILE_noaccess, eFILE_noaccess_msg)
+        __m_exit(eFILE_noaccess);
     }
     print_ln("Enter your texts: ");
     while (true)

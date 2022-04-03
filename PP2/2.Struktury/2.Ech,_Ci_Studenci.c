@@ -5,7 +5,7 @@
 #include <math.h>
 #include <time.h>
 
-#include "my_utils.h"
+#include "my_utils_v2.h"
 
 struct student_t
 {
@@ -23,7 +23,7 @@ int main()
     int result;
     if (read(&p, &result) == NULL)
     {
-        _e_exit(result, eINPUT_invalid_msg)
+        _e_exit(result, eINPUT_invalid);
     }
     show(&p);
     return 0;

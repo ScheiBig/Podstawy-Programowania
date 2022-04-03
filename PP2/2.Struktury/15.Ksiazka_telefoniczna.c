@@ -5,7 +5,7 @@
 #include <math.h>
 #include <time.h>
 
-#include "my_utils.h"
+#include "my_utils_v2.h"
 
 typedef struct entry_t
 {
@@ -26,17 +26,17 @@ int main()
     //NOLINTNEXTLINE(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling) -> Dante doesn't provide *_s
     if (scanf("%100s", f_buffer) != 1)
     {
-        _m_exit(eFILE_noaccess, eFILE_noaccess_msg)
+        __m_exit(eFILE_noaccess);
     }
     switch (load_phonebook_t(f_buffer, contacts, 10))
     {
     case -1: case -2:
     {
-        _m_exit(eFILE_noaccess, eFILE_noaccess_msg)
+        __m_exit(eFILE_noaccess);
     }
     case 0:
     {
-        _m_exit(eFILE_corrupted, eFILE_corrupted_msg)
+        __m_exit(eFILE_corrupted);
             
     }
     default:
@@ -46,7 +46,7 @@ int main()
     //NOLINTNEXTLINE(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling) -> Dante doesn't provide *_s
     if (scanf("%39s", ln_buffer) != 1)
     {
-        _m_exit(eINPUT_invalid, eINPUT_invalid_msg)
+        __m_exit(eINPUT_invalid);
     }
     const entry_s* found;
 

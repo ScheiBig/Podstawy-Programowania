@@ -5,8 +5,7 @@
 #include <math.h>
 #include <time.h>
 
-#define __discard_stdin__
-#include "my_utils.h"
+#include "my_utils_v2.h"
 
 struct point_t
 {
@@ -14,7 +13,6 @@ struct point_t
     int y;
 };
 struct point_t* read(struct point_t* p);
-struct point_t* set(struct point_t* p, int x, int y);
 void show(const struct point_t* p);
 float distance(const struct point_t* p1, const struct point_t* p2, int* err_code);
 
@@ -32,7 +30,7 @@ int main()
     segment_s segment;
     if (read_segment(&segment) == null)
     {
-        _m_exit(eINPUT_invalid, eINPUT_invalid_msg)
+        __m_exit(eINPUT_invalid);
     }
     show_segment(&segment);
     printf("%.2f", length(&segment, null));
@@ -57,17 +55,6 @@ struct point_t* read(struct point_t* p)
     {
         return null;
     }
-    return p;
-}
-
-struct point_t* set(struct point_t* p, int x, int y)
-{
-    if (p == null)
-    {
-        return null;
-    }
-    p->x = x;
-    p->y = y;
     return p;
 }
 

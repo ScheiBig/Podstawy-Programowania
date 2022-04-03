@@ -5,8 +5,7 @@
 #include <math.h>
 #include <time.h>
 
-#define __discard_stdin__
-#include "my_utils.h"
+#include "my_utils_v2.h"
 
 struct point_t
 {
@@ -27,7 +26,7 @@ int main()
 
     if (read(&p1) == NULL)
     {
-        _e_exit(eINPUT_invalid, eINPUT_invalid_msg)
+        __e_exit(eINPUT_invalid);
     }
     set(&p2, clip_range(rand(), -100, 100), clip_range(rand(), -100, 100));
     show(&p1);

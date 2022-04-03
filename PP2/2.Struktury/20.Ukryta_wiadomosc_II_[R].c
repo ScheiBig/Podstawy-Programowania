@@ -5,7 +5,7 @@
 #include <math.h>
 #include <time.h>
 
-#include "my_utils.h"
+#include "my_utils_v2.h"
 
 typedef struct message_t
 {
@@ -31,17 +31,17 @@ int main()
     //NOLINTNEXTLINE(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling) -> Dante doesn't provide *_s
     if (scanf("%30s", buffer) != 1)
     {
-        _m_exit(eFILE_noaccess, eFILE_noaccess_msg)
+        __m_exit(eFILE_noaccess);
     }
     int read_len;
 
     switch (read_len = load_data(hidden_data, 100, buffer))
     {
     case -2: {
-        _m_exit(eFILE_noaccess, eFILE_noaccess_msg)
+        __m_exit(eFILE_noaccess);
     }
     case -3: {
-        _m_exit(eFILE_corrupted, eFILE_corrupted_msg)
+        __m_exit(eFILE_corrupted);
     }
     case -1: return -1;
     default: break;
@@ -64,7 +64,7 @@ int load_data(struct message_t* cp, int size, const char* filename)
     {
         return -2;
     }
-    u_int size_infile, size_act;
+    u_int size_infile = 0, size_act;
     if (fread(&size_infile, sizeof(u_int), 1, f) == 0)
     {
         fclose(f);

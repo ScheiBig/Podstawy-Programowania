@@ -5,7 +5,7 @@
 #include <math.h>
 #include <time.h>
 
-#include "my_utils.h"
+#include "my_utils_v2.h"
 
 struct student_t
 {
@@ -42,7 +42,7 @@ int main()
     int result;
     if (read(&p, &result) == NULL)
     {
-        print_ln(eINPUT_invalid_msg);
+        print_ln(eINPUT_invalid);
     }
     else
     {
@@ -312,7 +312,6 @@ struct student_t* read(struct student_t* p, int* err_code)
             cond_assign_nn(err_code, 6)
             return NULL;
         }
-        had_comma = false;
     }
     else
     {
