@@ -1,6 +1,6 @@
 /**
  * @file my_utils_v2.h
- * @author Marcin Jeznach (241204@edu.p.lodz.pl)
+ * @author Marcin Jeznach 
  * @brief Various utilities:
  *            - predefined code errors and messages,
  *            - macros for printing to stdout and stderr with newline-termination
