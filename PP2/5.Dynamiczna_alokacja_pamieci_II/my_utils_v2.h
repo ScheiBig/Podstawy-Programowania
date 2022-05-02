@@ -76,6 +76,7 @@
 #define max(a, b) ((a) > (b) ? (a) : (b))
 
 #define null NULL
+typedef FILE* p_file;
 
 #define __include__swap(type) \
     void swap_##type(type* a1, type* a2)\
