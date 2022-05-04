@@ -1,6 +1,6 @@
 /**
  * @file my_utils_v2.h
- * @author Marcin Jeznach (241204@edu.p.lodz.pl)
+ * @author Marcin Jeznach 
  * @brief Various utilities:
  *            - predefined code errors and messages,
  *            - macros for printing to stdout and stderr with newline-termination
@@ -25,6 +25,8 @@
 #define eFILE_cantcreate "Couldn't create file"
 #define eFILE_noaccess_eno 4
 #define eFILE_noaccess "Couldn't open file"
+#define eOPERATION_invalid_eno 4
+#define eOPERATION_invalid "Operation not permitted"
 #define eDATA_insufficient_eno 3
 #define eDATA_insufficient "Not enough data available"
 #define eDATA_invalid_eno 2
@@ -63,7 +65,8 @@
 #define to_lowercase(chr) (is_uppercase(chr) ? (chr - 'A' + 'a') : chr)
 #define is_vovel(chr) (chr == 'a' || chr == 'e' || chr == 'i' || chr == 'o' || chr == 'u' || chr == 'A' || chr == 'E' || chr == 'I' || chr == 'O' || chr == 'U')
 #define is_digit(chr) ('0' <= chr && chr <= '9')
-#define ctoi(chr) (chr - '0')
+#define ctoi(chr) ((int)chr - (int)'0')
+#define dtoc(dig) ((char)dig + '0')
 #define str_term (char)0
 
 #define cond_assign_l(to, arg) (to = to < arg ? arg : to)
@@ -76,7 +79,6 @@
 #define max(a, b) ((a) > (b) ? (a) : (b))
 
 #define null NULL
-typedef FILE* p_file;
 
 #define __include__swap(type) \
     void swap_##type(type* a1, type* a2)\
@@ -95,6 +97,7 @@ typedef FILE* p_file;
         return count;\
     } 
 
+#include <string.h>
 
 #define __include__string_prepend() \
     char* string_prepend(char* string, char prefix)\
@@ -131,4 +134,30 @@ typedef FILE* p_file;
         if (ret) return 1;\
         \
         return 0;\
+    }
+
+#define __include__string_reverse() \
+    void string_reverse(char* str) \
+    { \
+        int str_len = (int)strlen(str); \
+        char temp; \
+        for (int i = 0; i < str_len / 2; ++i) \
+        { \
+            temp = *(str + i); \
+            *(str + i) = *(str + str_len - i - 1); \
+            *(str + str_len - i - 1) = temp; \
+        } \
+    }
+
+#define __include__string_reverse_lim() \
+    void string_reverse_lim(char* str, unsigned int lim) \
+    { \
+        int str_len = min(strlen(str), lim); \
+        char temp; \
+        for (int i = 0; i < str_len / 2; ++i) \
+        { \
+            temp = *(str + i); \
+            *(str + i) = *(str + str_len - i - 1); \
+            *(str + str_len - i - 1) = temp; \
+        } \
     }

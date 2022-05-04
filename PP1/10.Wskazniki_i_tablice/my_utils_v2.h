@@ -25,6 +25,8 @@
 #define eFILE_cantcreate "Couldn't create file"
 #define eFILE_noaccess_eno 4
 #define eFILE_noaccess "Couldn't open file"
+#define eOPERATION_invalid_eno 4
+#define eOPERATION_invalid "Operation not permitted"
 #define eDATA_insufficient_eno 3
 #define eDATA_insufficient "Not enough data available"
 #define eDATA_invalid_eno 2
@@ -76,7 +78,6 @@
 #define max(a, b) ((a) > (b) ? (a) : (b))
 
 #define null NULL
-typedef FILE* p_file;
 
 #define __include__swap(type) \
     void swap_##type(type* a1, type* a2)\
