@@ -77,6 +77,9 @@
 
 #define null NULL
 typedef FILE* p_file;
+typedef char* cstring;
+typedef const char* c_cstring;
+#define TO_DO __attribute__( warning("Function is not implemented") )
 
 #define __include__swap(type) \
     void swap_##type(type* a1, type* a2)\
