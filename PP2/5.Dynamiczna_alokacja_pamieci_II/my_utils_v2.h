@@ -77,6 +77,9 @@
 
 #define null NULL
 typedef FILE* p_file;
+typedef char* cstring;
+typedef const char* c_cstring;
+#define TO_DO __attribute__( warning("Function is not implemented") )
 
 #define __include__swap(type) \
     void swap_##type(type* a1, type* a2)\
@@ -92,6 +95,14 @@ typedef FILE* p_file;
     {\
         int count = 0;\
         while (fgetc(stdin) != '\n') ++count;\
+        return count;\
+    } 
+
+#define __include__discard_stream()  \
+    int discard_stream(p_file stream) \
+    {\
+        int count = 0;\
+        while (fgetc(stream) != '\n') ++count;\
         return count;\
     } 
 
