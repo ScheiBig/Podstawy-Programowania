@@ -98,6 +98,14 @@ typedef const char* c_cstring;
         return count;\
     } 
 
+#define __include__discard_stream()  \
+    int discard_stream(p_file stream) \
+    {\
+        int count = 0;\
+        while (fgetc(stream) != '\n') ++count;\
+        return count;\
+    } 
+
 
 #define __include__string_prepend() \
     char* string_prepend(char* string, char prefix)\
