@@ -7,6 +7,7 @@
 
 #include "my_utils_v2.h"
 __include__string_endswith()
+__include__discard_stdin()
 #include "matrix_utils.h"
 
 
@@ -21,6 +22,7 @@ int main()
 
     //NOLINTNEXTLINE(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling) -> Dante doesn't provide *_s
     scanf("%19s", filename);
+    discard_stdin();
     int err_code;
     struct matrix_t* (*getter)(c_cstring, int*);
     if (string_endswith(filename, ".bin"))

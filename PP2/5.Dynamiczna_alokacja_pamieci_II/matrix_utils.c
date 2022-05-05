@@ -135,7 +135,7 @@ struct matrix_t* matrix_copy(const struct matrix_t* copy)
     {
         return null;
     }
-    struct matrix_t* new_copy = matrix_create_struct(copy->width, copy->width);
+    struct matrix_t* new_copy = matrix_create_struct(copy->width, copy->height);
     if (new_copy == null)
     {
         return null;
@@ -224,7 +224,7 @@ struct  matrix_t* matrix_multiply(const struct matrix_t* m1, const struct matrix
         return null;
     }
     struct matrix_t* result;
-    if ((result = matrix_create_struct(m1->height, m2->width)) == null)
+    if ((result = matrix_create_struct(m2->width, m1->height)) == null)
     {
         return null;
     }
@@ -232,9 +232,10 @@ struct  matrix_t* matrix_multiply(const struct matrix_t* m1, const struct matrix
     {
         for (int x = 0; x < result->width; ++x)
         {
+            *(*(result->ptr + y) + x) = 0;
             for (int i = 0; i < m2->height; ++i)
             {
-                *(*(result->ptr + y) + x) = *(*(m1->ptr + y) + i) - *(*(m2->ptr + i) + x);
+                *(*(result->ptr + y) + x) += *(*(m1->ptr + y) + i) * *(*(m2->ptr + i) + x);
             }
         }
     }
