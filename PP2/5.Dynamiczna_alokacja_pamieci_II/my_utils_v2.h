@@ -54,14 +54,15 @@
 
 #define clip_range(in, from, to) (in % (to - from + 1) + from)
 #define is_even(num) (num % 2 == 0)
-#define is_odd(num) (num % 2 != 0))
+#define is_odd(num) (num % 2 != 0)
 
 #define is_letter(chr) ('a' <= chr && chr <= 'z' || 'A' <= chr && chr <= 'Z')
 #define is_uppercase(chr) ('A' <= chr && chr <= 'Z')
 #define is_lowercase(chr) ('a' <= chr && chr <= 'z')
 #define to_uppercase(chr) (is_lowercase(chr) ? (chr - 'a' + 'A') : chr)
 #define to_lowercase(chr) (is_uppercase(chr) ? (chr - 'A' + 'a') : chr)
-#define is_vovel(chr) (chr == 'a' || chr == 'e' || chr == 'i' || chr == 'o' || chr == 'u' || chr == 'A' || chr == 'E' || chr == 'I' || chr == 'O' || chr == 'U')
+#define is_vovel(chr) (chr == 'a' || chr == 'e' || chr == 'i' || chr == 'o' || chr == 'u' \
+    || chr == 'A' || chr == 'E' || chr == 'I' || chr == 'O' || chr == 'U')
 #define is_digit(chr) ('0' <= chr && chr <= '9')
 #define ctoi(chr) (chr - '0')
 #define str_term (char)0
@@ -74,6 +75,8 @@
 #define double_almost_eq(arg, to, eps) ((to - eps) < arg && arg < (to + eps))
 #define min(a, b) ((a) < (b) ? (a) : (b))
 #define max(a, b) ((a) > (b) ? (a) : (b))
+#define is_in_range(dest_start, dest_end, src_start, src_end, src_offset) \
+    (dest_start <= (src_start + src_offset) && (src_start + src_offset) <= dest_end)
 
 #define null NULL
 typedef FILE* p_file;

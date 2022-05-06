@@ -27,7 +27,7 @@ struct image_t* load_image_t(c_cstring filename, int* err_code)
         return null;
     }
     //NOLINTNEXTLINE(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling) -> Dante doesn't provide *_s
-    if (fscanf(file, "%3s", img->type) != 1)
+    if (fscanf(file, "%3s", img->type) != 1 || strcmp(img->type, "P2"))
     {
         cond_assign_nn(err_code, 3);
         fclose(file);
@@ -35,17 +35,17 @@ struct image_t* load_image_t(c_cstring filename, int* err_code)
         return null;
     }
     discard_stream(file);
-    int temp;
     //NOLINTNEXTLINE(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling) -> Dante doesn't provide *_s
-    if (fscanf(file, "%d", &temp) != 1 || 0 > temp || temp > 255)
+    if (fscanf(file, "%d %d", &img->width, &img->height) != 2 || img->width <= 0 || img->height <= 0)
     {
         cond_assign_nn(err_code, 3);
         fclose(file);
         free(img);
         return null;
     }
+    int temp;
     //NOLINTNEXTLINE(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling) -> Dante doesn't provide *_s
-    if (fscanf(file, "%d %d", &img->width, &img->height) != 2 || img->width <= 0 || img->height <= 0)
+    if (fscanf(file, "%d", &temp) != 1 || 0 > temp || temp > 255)
     {
         cond_assign_nn(err_code, 3);
         fclose(file);
@@ -79,7 +79,8 @@ struct image_t* load_image_t(c_cstring filename, int* err_code)
         for (int x = 0; x < img->width; ++x)
         {
             //NOLINTNEXTLINE(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling) -> Dante doesn't provide *_s
-            if (fscanf(file, "%d ", (*(img->ptr + y) + x)) <= 0)
+            if (fscanf(file, "%d ", (*(img->ptr + y) + x)) <= 0 ||
+                0 > *(*(img->ptr + y) + x) || *(*(img->ptr + y) + x) > 255)
             {
                 cond_assign_nn(err_code, 3);
                 fclose(file);
@@ -149,5 +150,49 @@ int save_image_t(c_cstring filename, const struct image_t* m1)
     }
 
     fclose(file);
+    return 0;
+}
+
+void destroy_image(struct image_t** m)
+{
+    if (m != null)
+    {
+        if ((*m)->ptr != null && (*m)->width > 0 && (*m)->height > 0)
+        {
+            for (int y = 0; y < (*m)->height; ++y)
+            {
+                if (*((*m)->ptr + y) != null)
+                {
+                    free(*((*m)->ptr + y));
+                }
+                else
+                {
+                    return;
+                }
+            }
+            free((*m)->ptr);
+        }
+        else
+        {
+            return;
+        }
+        free((*m));
+        (*m) = null;
+    }
+}
+
+const int* image_get_pixel(const struct image_t* img, int x, int y)
+{
+    return null;
+}
+
+
+int* image_set_pixel(struct image_t* img, int x, int y)
+{
+    return null;
+}
+
+int draw_image(struct image_t* img, const struct image_t* src, int destx, int desty)
+{
     return 0;
 }
