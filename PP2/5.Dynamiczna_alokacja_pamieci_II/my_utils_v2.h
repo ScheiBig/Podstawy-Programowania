@@ -76,7 +76,7 @@
 #define min(a, b) ((a) < (b) ? (a) : (b))
 #define max(a, b) ((a) > (b) ? (a) : (b))
 #define is_in_range(dest_start, dest_end, src_start, src_end, src_offset) \
-    (dest_start <= (src_start + src_offset) && (src_start + src_offset) <= dest_end)
+    (dest_start <= (src_start + src_offset) && (src_end + src_offset) <= dest_end)
 
 #define null NULL
 typedef FILE* p_file;

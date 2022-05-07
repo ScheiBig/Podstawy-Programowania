@@ -122,6 +122,11 @@ int save_image_t(c_cstring filename, const struct image_t* m1)
         fclose(file);
         return 3;
     }
+    if (fprintf(file, "%d %d\n", m1->width, m1->height) <= 0)
+    {
+        fclose(file);
+        return 3;
+    }
     if (fprintf(file, "255\n") <= 0)
     {
         fclose(file);
@@ -178,38 +183,16 @@ void destroy_image(struct image_t** m)
 
 const int* image_get_pixel(const struct image_t* img, int x, int y)
 {
-    return (const int*) image_set_pixel((struct image_t*)img, x, y);
+    return null;
 }
 
 
 int* image_set_pixel(struct image_t* img, int x, int y)
 {
-    if (img == null || img->ptr == null || *(img->ptr + y) == null || img->width <= 0 ||
-        img->height <= 0 || 0 > x || x >= img->width || 0 > y || y >= img->height)
-    {
-        return null;
-    }
-    return (*(img->ptr + y) + x);
+    return null;
 }
 
 int draw_image(struct image_t* img, const struct image_t* src, int destx, int desty)
 {
-    if (image_get_pixel(img, 0, 0) == null || image_get_pixel(src, 0, 0) == null ||
-        destx < 0 || desty < 0 || !is_in_range(0, img->width, 0, src->width, destx) ||
-        !is_in_range(0, img->height, 0, src->height, desty))
-    {
-        return 1;
-    }
-    for (int y = 0; y < src->height; ++y)
-    {
-        if (*(img->ptr + y + desty) == null || *(src->ptr + y) == null)
-        {
-            return 1;
-        }
-        for (int x = 0; x < src->width; ++x)
-        {
-            *image_set_pixel(img, x + destx, y + desty) = *image_get_pixel(src, x, y);
-        }
-    }
     return 0;
 }
