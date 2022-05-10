@@ -150,7 +150,7 @@ int save_image_t(c_cstring filename, const struct image_t* m1)
 
 void destroy_image(struct image_t** m)
 {
-    if (m != null)
+    if (m != null && (*m) != null)
     {
         if ((*m)->ptr != null && (*m)->width > 0 && (*m)->height > 0)
         {
@@ -178,7 +178,7 @@ void destroy_image(struct image_t** m)
 
 const int* image_get_pixel(const struct image_t* img, int x, int y)
 {
-    return (const int*) image_set_pixel((struct image_t*)img, x, y);
+    return (const int*)image_set_pixel((struct image_t*)img, x, y);
 }
 
 
