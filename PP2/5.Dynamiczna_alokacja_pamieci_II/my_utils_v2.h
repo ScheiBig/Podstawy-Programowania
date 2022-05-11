@@ -109,9 +109,8 @@ typedef const char* c_cstring;
         return count;\
     } 
 
-
 #define __include__string_prepend() \
-    cstring string_prepend(cstring string, char prefix)\
+    cstring string_prepend_c(cstring string, char prefix)\
     {\
         int len = strlen(string) + 1;\
         for (int i = len; i >= 1; --i)\
@@ -119,6 +118,32 @@ typedef const char* c_cstring;
             *(string + i) = *(string + i - 1);\
         }\
         *(string) = prefix;\
+        return string;\
+    } \
+\
+cstring string_prepend(cstring string, cstring prefix)\
+    {\
+        for (char* c = prefix; (*c) != str_term; ++c) \
+        { \
+            string_prepend_c(string, (*c)); \
+        } \
+        return string;\
+    }
+
+#define __include__string_append() \
+    cstring string_append_c(cstring string, char suffix)\
+    {\
+        int len = strlen(string);\
+        *(string + len) = suffix;\
+        return string;\
+    } \
+\
+cstring string_append(cstring string, cstring suffix)\
+    {\
+        for (char* c = suffix; (*c) != str_term; ++c) \
+        { \
+            string_append_c(string, (*c)); \
+        } \
         return string;\
     }
 
