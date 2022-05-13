@@ -14,3 +14,7 @@ struct statistic_t
 int statistics(int** ptr, struct statistic_t** stats);
 void display(int** ptr);
 int save(const char* filename, int** ptr, enum save_format_t format);
+
+int load(const char* filename, int*** ptr, enum save_format_t format);
+int statistics_row(int** ptr, struct statistic_t** stats);
+void destroy(int*** ptr);
