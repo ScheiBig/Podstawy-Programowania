@@ -61,3 +61,21 @@ size_t string_split_count(c_cstring str, c_cstring delimiters)
     }
     return count;
 }
+
+token token_trim_spaces(token tok)
+{
+    if (tok.start_ptr == null || tok.delimiters == null || tok.length == 0)
+    {
+        return (token) { .start_ptr = null, .length = 0, .delimiters = null };
+    }
+    cstring st_ptr = (cstring)tok.start_ptr;
+    size_t len = tok.length;
+
+    for (; *st_ptr == ' '; ++st_ptr, --len);
+    for (; *(st_ptr + len - 1) == ' '; --len)
+    {
+        null;
+    }
+
+    return (token) { .start_ptr = st_ptr, .length = len, .delimiters = tok.delimiters };
+}

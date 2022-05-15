@@ -45,7 +45,6 @@ struct student_t* read(int* err_code)
     word.length += 2;
     
     word = stream_split_next(word);
-
     if (word.start_pos == EOF)
     {
         cond_assign_nn(err_code, 1);

@@ -80,3 +80,11 @@ int string_endswith(c_cstring str, c_cstring end)
 
     return 0;
 }
+
+cstring strncpy_term(cstring dest, c_cstring src, size_t N)
+{
+    //NOLINTNEXTLINE(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling) -> Dante doesn't provide *_s
+    cstring ret = strncpy(dest, src, N);
+    *(dest + N) = str_term;
+    return ret;
+}
