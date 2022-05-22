@@ -67,6 +67,7 @@
     || chr == 'A' || chr == 'E' || chr == 'I' || chr == 'O' || chr == 'U')
 #define is_digit(chr) ('0' <= chr && chr <= '9')
 #define ctoi(chr) (chr - '0')
+#define dtoc(dig) ((char)dig + '0')
 #define str_term (char)0
 
 #define cond_assign_l(to, arg) (to = to < arg ? arg : to)

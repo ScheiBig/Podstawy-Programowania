@@ -88,3 +88,28 @@ cstring strncpy_term(cstring dest, c_cstring src, size_t N)
     *(dest + N) = str_term;
     return ret;
 }
+
+
+void string_reverse(cstring str)
+{
+    size_t str_len = strlen(str);
+    char temp;
+    for (size_t i = 0; i < str_len / 2; ++i)
+    {
+        temp = *(str + i);
+        *(str + i) = *(str + str_len - i - 1);
+        *(str + str_len - i - 1) = temp;
+    }
+}
+
+void string_reverse_lim(cstring str, size_t lim)
+{
+    size_t str_len = min(strlen(str), lim);
+    char temp;
+    for (size_t i = 0; i < str_len / 2; ++i)
+    {
+        temp = *(str + i);
+        *(str + i) = *(str + str_len - i - 1);
+        *(str + str_len - i - 1) = temp;
+    }
+}
