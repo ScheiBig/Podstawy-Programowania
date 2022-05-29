@@ -1,0 +1,35 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "valgrind: custom",
+			"type": "valgrind",
+			"target": "${command:cmake.launchTargetPath}",
+			"valgrind": {
+				"args": [
+					"--tool=memcheck",
+					"--leak-check=yes",
+					"--show-reachable=yes",
+					"--num-callers=20",
+					"-s"
+				]
+			}
+		},
+		{
+			"type": "valgrind-debug",
+			"target": "${command:cmake.launchTargetPath}",
+			"problemMatcher": [
+				"$valgrind-debug"
+			],
+			"label": "valgrind-debug: valgrind-debug"
+		},
+		{
+			"type": "valgrind",
+			"target": "${command:cmake.launchTargetPath}",
+			"problemMatcher": [
+				"$valgrind"
+			],
+			"label": "valgrind: valgrind"
+		}
+	]
+}

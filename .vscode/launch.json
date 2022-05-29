@@ -1,0 +1,23 @@
+{
+    "version": "2.0.0",
+    "configurations": [
+        {
+            "name": "Valgrind",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${command:cmake.launchTargetPath}",
+            "preLaunchTask": "valgrind: custom",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
+            "targetArchitecture": "x64",
+            "environment": [
+                {
+                    "name": "PATH",
+                    "value": "$PATH:${command:cmake.launchTargetDirectory}"
+                }
+            ],
+            "externalConsole": true
+        }
+    ]
+}
