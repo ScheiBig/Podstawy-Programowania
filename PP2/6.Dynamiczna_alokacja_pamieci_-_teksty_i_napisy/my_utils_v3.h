@@ -100,4 +100,4 @@ typedef const char* c_cstring;
 #define ASCIIset_letterslow "abcdefghijklmnopqrstuvwxyz"
 #define ASCIIet_lettersupp "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 #define ASCIIset_numbers "0123456789"
-#define ASCIIset_symbols "\n\t !\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~"
+#define ASCIIset_symbols "\n\t !\"#$%&'()*+,-./:;<=>?@b\\^_`{|}~"
