@@ -89,6 +89,7 @@
 typedef FILE* p_file;
 typedef char* cstring;
 typedef const char* c_cstring;
+typedef unsigned char byte;
 #define TO_DO __attribute__( warning("Function is not implemented") )
 
 #define __include__swap(type) \
@@ -97,6 +98,21 @@ typedef const char* c_cstring;
         type temp = *a1;\
         *a1 = *a2;\
         *a2 = temp;\
+    }
+
+#define __include__swap_generic() \
+    void swap_generic(void* a1, void* a2, size_t a_size) \
+    { \
+        typedef unsigned char byte; \
+        byte* A1 = (byte*)a1; \
+        byte* A2 = (byte*)a2; \
+        byte temp; \
+        for (size_t i = 0; i < a_size; ++i) \
+        { \
+            temp = *(A1 + i); \
+            *(A1 + i) = *(A2 + i); \
+            *(A2 + i) = temp; \
+        } \
     }
 
 #define ASCIIset_letterslow "abcdefghijklmnopqrstuvwxyz"
