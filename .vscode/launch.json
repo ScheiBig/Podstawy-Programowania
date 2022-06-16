@@ -18,6 +18,18 @@
                 }
             ],
             "externalConsole": true
+        },
+        {
+            "name": "C++ Launch",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${command:cmake.launchTargetPath}",
+            "miDebuggerServerAddress": "myremotehostname:1234",
+            "cwd": "${workspaceRoot}",
+            "externalConsole": true,
+            "linux": {
+                "MIMode": "gdb"
+            }
         }
     ]
 }

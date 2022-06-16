@@ -34,7 +34,10 @@
         "inttypes.h": "c",
         "my_exit.h": "c",
         "string": "c",
-        "image_utils.h": "c"
+        "image_utils.h": "c",
+        "wordcross_utils.h": "c",
+        "my_utils_v3.h": "c",
+        "comparators.h": "c"
     },
     "C_Cpp.default.configurationProvider": "ms-vscode.cmake-tools"
 }
