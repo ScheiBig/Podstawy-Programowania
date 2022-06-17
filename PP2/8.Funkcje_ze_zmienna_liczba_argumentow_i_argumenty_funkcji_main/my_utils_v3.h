@@ -17,6 +17,9 @@
  */
 #pragma once
 
+#define eERROR_unknown_eno 42069
+#define eERROR_unknown "Unknown program state"
+
 #define eARGS_insufficient_eno 9
 #define eARGS_insufficient "Not enough arguments"
 #define eMEMORY_cantallocate_eno 8
