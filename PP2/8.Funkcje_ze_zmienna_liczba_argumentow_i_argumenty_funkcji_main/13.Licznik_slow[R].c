@@ -12,7 +12,7 @@
 int* count_words(c_cstring filename, int* err_code, int N, ...);
 void find_words(p_file file, cstring word, int* results);
 
-#define a1 *(argv + 0x2)
+#define a1     *(argv + 0x2)
 #define a2 a1, *(argv + 0x3)
 #define a3 a2, *(argv + 0x4)
 #define a4 a3, *(argv + 0x5)
