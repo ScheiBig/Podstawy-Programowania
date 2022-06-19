@@ -36,7 +36,7 @@ int main()
     print_ln("Select operation (0-toggle, 1-set, 2-clear, 3-read):");
     //NOLINTNEXTLINE(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling) -> Dante doesn't provide *_s
     if (scanf("%d", &op) != 1) { __m_exit(eINPUT_invalid); }
-    else if (!is_num_in_range(op, 0, 3)) { __m_exit(eINPUT_invalid); }
+    else if (!is_num_in_range(op, 0, 3)) { __m_exit(eOPERATION_invalid); }
 
     switch (op)
     {
