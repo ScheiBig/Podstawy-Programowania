@@ -5,8 +5,8 @@
 #define MIN(a, b) ((a) < (b) ? (a) :(b))
 #define MAX(a, b) ((a) > (b) ? (a) :(b))
 
-// Obliczania liczby ustawionych i wyzerowanych bitów w liczbie przekazanej do makra.Makro powinno przyjąć liczbę całkowitą, dla której ma zostać wyznaczona statystyka i dwa wskaźniki na liczby całkowite, do której ma zostać zapisany wynik.
-// Przykład wywołania :
+
+
 #define COUNT_BITS(v, p_s, p_c) do \
 {\
     if (p_s == NULL || p_c == NULL) { break; } \
@@ -21,7 +21,6 @@
     }\
 } while (0)
 
-// Wyświetlania reprezentacji binarnej liczby przekazanej do makra.Przykład wywołania :
 #define DISPLAY_BITS(v) do \
 { \
     const char* f = NULL; \
@@ -42,7 +41,6 @@
     } \
 } while (0)
 
-// Odwracania kolejności bitów w liczbie.Przykład wywołania :
 #define REVERSE_BITS(p) \
 do \
 { \
@@ -92,3 +90,36 @@ do \
     } \
  \
 } while (0)
+
+
+
+#define CREATE_READ_FUNCTIONS(TYPE, FORMAT) \
+    int read_ ## TYPE(TYPE* data, int size) \
+    { \
+        if (size <= 0 || data == NULL) { return 1; } \
+        for (int i = 0; i < size; ++i) \
+        { \
+            if (scanf(FORMAT, data + i) != 1) { return 2; } \
+        } \
+        while (getc(stdin) != '\n'); \
+        return 0; \
+    }
+#include <stdlib.h>
+
+#define CREATE_SORT_FUNCTIONS(TYPE) \
+    int comp_ ## TYPE(const void* a, const void* b) { return (*(TYPE*)a > *(TYPE*)b) ? 1 : (*(TYPE*)a < *(TYPE*)b) ? -1 : 0; } \
+    int sort_ ## TYPE(TYPE* data, int size) \
+    { \
+        if (size <= 0 || data == NULL) return 1; \
+        qsort(data, (unsigned)size, sizeof(TYPE), comp_ ## TYPE); \
+        return 0; \
+    } 
+
+
+#define CREATE_DISPLAY_FUNCTIONS(TYPE, FORMAT) \
+    void display_ ## TYPE(const TYPE* data, int size) \
+    { \
+        if (size <= 0 || data == NULL) return; \
+        for (int i = 0; i < size; ++i) { printf(FORMAT " ", *(data + i)); } \
+        printf("\n"); \
+    }
