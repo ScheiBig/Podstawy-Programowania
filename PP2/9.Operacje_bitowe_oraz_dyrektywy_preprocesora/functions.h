@@ -104,8 +104,8 @@ do \
         while (getc(stdin) != '\n'); \
         return 0; \
     }
-#include <stdlib.h>
 
+#include <stdlib.h>
 #define CREATE_SORT_FUNCTIONS(TYPE) \
     int comp_ ## TYPE(const void* a, const void* b) { return (*(TYPE*)a > *(TYPE*)b) ? 1 : (*(TYPE*)a < *(TYPE*)b) ? -1 : 0; } \
     int sort_ ## TYPE(TYPE* data, int size) \
@@ -113,7 +113,7 @@ do \
         if (size <= 0 || data == NULL) return 1; \
         qsort(data, (unsigned)size, sizeof(TYPE), comp_ ## TYPE); \
         return 0; \
-    } 
+    }
 
 
 #define CREATE_DISPLAY_FUNCTIONS(TYPE, FORMAT) \
@@ -122,4 +122,93 @@ do \
         if (size <= 0 || data == NULL) return; \
         for (int i = 0; i < size; ++i) { printf(FORMAT " ", *(data + i)); } \
         printf("\n"); \
+    }
+
+
+
+#define DEFINE_ARRAY(TYPE) \
+    typedef struct array_ ## TYPE ## _t \
+    { \
+        int size; \
+        int capacity; \
+        TYPE* data; \
+    } array_ ## TYPE ## _s;
+
+#define CREATE_ARRAY(TYPE) \
+    array_ ## TYPE ## _s* create_array_ ## TYPE(int size) \
+    { \
+        if (size <= 0) { return NULL; } \
+        array_ ## TYPE ## _s* array = (array_ ## TYPE ## _s*)calloc(1, sizeof(array_ ## TYPE ## _s)); \
+        if (array == NULL) { return NULL; } \
+        if ((array->data = (TYPE*)calloc((unsigned)size, sizeof(TYPE))) == NULL) \
+        { \
+            free(array); \
+            return NULL; \
+        } \
+        array->size = 0; \
+        array->capacity = size; \
+        return array; \
+    }
+
+#define FREE_ARRAY(TYPE) \
+    void free_array_ ## TYPE(array_ ## TYPE ## _s* array) \
+    { \
+        if (array == NULL) { return; } \
+        if (array->capacity <= 0) { return; } \
+        if (array->size < 0) { return; } \
+        if (array->size > array->capacity) { return; } \
+        if (array->data != NULL) { free(array->data); } \
+        free(array); \
+    }
+
+#include <string.h>
+#define SAVE_ARRAY(TYPE) \
+    int save_array_ ## TYPE(const array_ ## TYPE ## _s* array, const char* filename) \
+    { \
+        if (array == NULL || array->data == NULL || array->capacity <= 0 || array->size <= 0 || \
+             array->size > array->capacity || filename == NULL || strlen(filename) == 0) { return 1; } \
+        FILE* f = fopen(filename, "wb"); \
+        if (f == NULL) { return 2; } \
+        fwrite(&array->size, sizeof(int), 1u, f); \
+        fwrite(array->data, sizeof(TYPE), (unsigned)array->size, f); \
+        fclose(f); \
+        return 0; \
+    }
+
+#define LOAD_ARRAY(TYPE) \
+    int load_array_ ## TYPE(array_ ## TYPE ## _s** array, const char* filename) \
+    { \
+        if (array == NULL || filename == NULL || strlen(filename) == 0) { return 1; } \
+        FILE* f = fopen(filename, "rb"); \
+        if (f == NULL) { return 2; } \
+        int size; \
+        if (fread(&size, sizeof(int), 1u, f) != 1u || size <= 0) \
+        { \
+            fclose(f); \
+            return 3; \
+        } \
+        if ((*array = create_array_ ## TYPE(size)) == NULL) \
+        { \
+            fclose(f); \
+            return 4; \
+        } \
+        if (fread((*array)->data, sizeof(TYPE), (unsigned)size, f) != (unsigned)size) \
+        { \
+            free_array_ ## TYPE(*array); \
+            fclose(f); \
+            return 3; \
+        } \
+        (*array)->size = (unsigned)size; \
+        fclose(f); \
+        return 0; \
+    }
+
+#define SORT_ARRAY(TYPE) \
+    CREATE_SORT_FUNCTIONS(TYPE) \
+    int sort_array_ ## TYPE(struct array_ ## TYPE ## _t* array) \
+    { \
+        if (array == NULL || array->data == NULL || array->capacity <= 0 || array->size <= 0 || \
+            array->size > array->capacity) { return 1; } \
+        sort_ ## TYPE(array->data, array->size); \
+        return 0; \
     }
