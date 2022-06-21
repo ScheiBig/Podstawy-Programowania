@@ -6,25 +6,33 @@
 
 typedef struct
 {
+    // Pointer to start of token resulting from splitting. As pointer is in memory space of processed string,
+    // it is NOT null-terminated at the end of token
     c_cstring start_ptr;
+    // Length of string resulting from splitting, needs to be used in further processing, as this#start_ptr
+    // is not null-terminated after `length` characters
     size_t length;
+    // Pointer of string passed to #strpbrk(%, %). If in this result address of delimiters is `null`, this token 
+    // is last token in string being processed
     c_cstring delimiters;
 } token;
+
+#define token_empty (token) { .start_ptr = null, .length = 0, .delimiters = null }
 
 token string_split(c_cstring str, c_cstring delimiters)
 {
     if (str == null || strlen(str) == 0 || delimiters == null || strlen(delimiters) == 0)
     {
-        return (token) { .start_ptr = null, .length = 0, .delimiters = null };
+        return token_empty;
     }
     c_cstring cur_match = str;
     c_cstring next_match = strpbrk(cur_match, delimiters);
-    size_t len = strlen(cur_match);
     while (true)
     {
-        if (next_match == null)
+        if (strlen(cur_match) == 0) { return token_empty; }
+        else if (next_match == null)
         {
-            return (token) { .start_ptr = str, .length = len, .delimiters = null };
+            return (token) { .start_ptr = cur_match, .length = strlen(cur_match), .delimiters = null };
         }
         if (next_match - cur_match == 0)
         {
@@ -39,7 +47,7 @@ token string_split_next(token prev)
 {
     if (prev.start_ptr == null || prev.delimiters == null || prev.length == 0)
     {
-        return (token) { .start_ptr = null, .length = 0, .delimiters = null };
+        return token_empty;
     }
     return string_split(prev.start_ptr + prev.length + 1, prev.delimiters);
 }
@@ -66,7 +74,7 @@ token token_trim_spaces(token tok)
 {
     if (tok.start_ptr == null || tok.delimiters == null || tok.length == 0)
     {
-        return (token) { .start_ptr = null, .length = 0, .delimiters = null };
+        return token_empty;
     }
     cstring st_ptr = (cstring)tok.start_ptr;
     size_t len = tok.length;
@@ -84,16 +92,15 @@ token string_split_e(c_cstring str, c_cstring delimiters)
 {
     if (str == null || delimiters == null || strlen(delimiters) == 0)
     {
-        return (token) { .start_ptr = null, .length = 0, .delimiters = null };
+        return token_empty;
     }
     c_cstring cur_match = str;
     c_cstring next_match = strpbrk(cur_match, delimiters);
-    size_t len = strlen(cur_match);
     while (true)
     {
         if (next_match == null)
         {
-            return (token) { .start_ptr = str, .length = len, .delimiters = null };
+            return (token) { .start_ptr = cur_match, .length = strlen(cur_match), .delimiters = null };
         }
         return (token) { .start_ptr = cur_match, .length = (size_t)(next_match - cur_match), .delimiters = delimiters };
     }
@@ -103,7 +110,7 @@ token string_split_next_e(token prev)
 {
     if (prev.start_ptr == null || prev.delimiters == null)
     {
-        return (token) { .start_ptr = null, .length = 0, .delimiters = null };
+        return token_empty;
     }
     return string_split_e(prev.start_ptr + prev.length + 1, prev.delimiters);
 }

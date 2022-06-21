@@ -2,6 +2,7 @@
 
 #include <string.h>
 #include <stdlib.h>
+#include <ctype.h>
 
 #include "my_utils_v3.h"
 
@@ -113,6 +114,16 @@ void string_reverse_lim(cstring str, size_t lim)
         temp = *(str + i);
         *(str + i) = *(str + str_len - i - 1);
         *(str + str_len - i - 1) = temp;
+    }
+}
+
+void string_flip_case(cstring str)
+{
+    for (char* c = str; *c != str_term; ++c)
+    {
+        if (!isalpha(*c)) continue;
+        else if (islower(*c)) *c -= 0x20;
+        else if (isupper(*c)) *c += 0x20;
     }
 }
 

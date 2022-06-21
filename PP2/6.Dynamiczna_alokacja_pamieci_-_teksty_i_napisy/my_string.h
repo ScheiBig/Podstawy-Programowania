@@ -18,6 +18,7 @@ cstring strncpy_term(cstring, c_cstring, size_t);
 
 void string_reverse(cstring);
 void string_reverse_lim(cstring, size_t);
+void string_flip_case(cstring);
 
 cstring alloc_string_append(cstring, cstring, size_t);
 cstring alloc_string_prepend(cstring, cstring, size_t);

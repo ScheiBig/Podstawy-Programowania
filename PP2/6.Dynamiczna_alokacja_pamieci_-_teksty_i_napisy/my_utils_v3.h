@@ -1,5 +1,5 @@
 /**
- * @file my_utils_v2.h
+ * @file my_utils_v3.h
  * @author Marcin Jeznach (241204@edu.p.lodz.pl)
  * @brief Various utilities:
  *            - predefined code errors and messages,
@@ -17,6 +17,18 @@
  */
 #pragma once
 
+#define iFILE_saved_eno 0
+#define iFILE_saved "File saved"
+
+#define eERROR_unknown_eno 42069
+#define eERROR_unknown "Unknown program state"
+#define eBIT_outbounds_eno 1
+#define eBIT_outbounds "Invalid bit index"
+#define eOPERATION_invalid_eno 1
+#define eOPERATION_invalid "Invalid operation"
+
+#define eARGS_insufficient_eno 9
+#define eARGS_insufficient "Not enough arguments"
 #define eMEMORY_cantallocate_eno 8
 #define eMEMORY_cantallocate "Failed to allocate memory"
 #define eFILE_unsupported_eno 7
@@ -57,6 +69,7 @@
 #define clip_range(in, from, to) (in % (to - from + 1) + from)
 #define is_even(num) (num % 2 == 0)
 #define is_odd(num) (num % 2 != 0)
+#define is_num_in_range(num, r_start, r_end) ((r_start) <= (num) && (num) <= (r_end))
 
 #define is_letter(chr) ('a' <= chr && chr <= 'z' || 'A' <= chr && chr <= 'Z')
 #define is_uppercase(chr) ('A' <= chr && chr <= 'Z')
@@ -81,12 +94,14 @@
 #define is_in_range(dest_start, dest_end, src_start, src_end, src_offset) \
     (dest_start <= (src_start + src_offset) && (src_end + src_offset) <= dest_end)
 
+
 #define to_string(arg) #arg
 
 #define null NULL
 typedef FILE* p_file;
 typedef char* cstring;
 typedef const char* c_cstring;
+typedef unsigned char byte;
 #define TO_DO __attribute__( warning("Function is not implemented") )
 
 #define __include__swap(type) \
@@ -97,7 +112,23 @@ typedef const char* c_cstring;
         *a2 = temp;\
     }
 
+#define __include__swap_generic() \
+    void swap_generic(void* a1, void* a2, size_t a_size) \
+    { \
+        typedef unsigned char byte; \
+        byte* A1 = (byte*)a1; \
+        byte* A2 = (byte*)a2; \
+        byte temp; \
+        for (size_t i = 0; i < a_size; ++i) \
+        { \
+            temp = *(A1 + i); \
+            *(A1 + i) = *(A2 + i); \
+            *(A2 + i) = temp; \
+        } \
+    }
+
 #define ASCIIset_letterslow "abcdefghijklmnopqrstuvwxyz"
 #define ASCIIet_lettersupp "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 #define ASCIIset_numbers "0123456789"
-#define ASCIIset_symbols "\n\t !\"#$%&'()*+,-./:;<=>?@b\\^_`{|}~"
+#define ASCIIset_symbols "\n\t !\"#$%&'()*+,-./:;<=>?@\133\\\135^_`{|}~" 
+#define ASCIIset_unprintable "\001\002\003\004\005\006\007\010\011\012\013\014\015\016\017\020\021\022\023\024\025\026\027\030\031\032\033\034\035\036\037" 
