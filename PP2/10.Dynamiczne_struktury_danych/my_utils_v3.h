@@ -17,6 +17,17 @@
  */
 #pragma once
 
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <stdbool.h>
+#include <math.h>
+#include <time.h>
+#include <stdarg.h>
+#include <limits.h>
+#include <ctype.h>
+#include <stddef.h>
+
 #define iFILE_saved_eno 0
 #define iFILE_saved "File saved"
 
@@ -134,3 +145,19 @@ typedef unsigned char byte;
 #define ASCIIset_unprintable "\001\002\003\004\005\006\007\010\011\012\013\014\015\016\017\020\021\022\023\024\025\026\027\030\031\032\033\034\035\036\037" 
 
 void* recalloc(void* ptr, size_t oldsize, size_t newsize);
+
+void* m_malloc(size_t __size);
+void* m_calloc(size_t __nmemb, size_t __size);
+void* m_realloc(void* __ptr, size_t __size);
+void m_free(void* __ptr);
+
+struct memory_i
+{
+    void* (*allocate) (size_t __size);
+    void* (*allocate_empty) (size_t __nmemb, size_t __size);
+    void* (*reallocate) (void* __ptr, size_t __size);
+    void* (*reallocate_empty) (void* ptr, size_t oldsize, size_t newsize);
+    void (*release) (void* __ptr);
+};
+
+extern const struct memory_i MEMORY;
