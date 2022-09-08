@@ -11,10 +11,10 @@ typedef s_node* p_node;
 typedef struct stack_t
 {
     p_node head;
-} s_stack;
+} stack_s;
 
-typedef s_stack* p_stack;
-typedef const s_stack* pc_stack;
+typedef stack_s* p_stack;
+typedef const stack_s* pc_stack;
 
 /*
  * Funkcja przydziela pamięć na strukturę stack_t i inicjuje jej pola odpowiednimi wartościami.

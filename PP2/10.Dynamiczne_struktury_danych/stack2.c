@@ -1,4 +1,4 @@
-#include "stack2.h"
+#include "stack.h"
 
 #include <stdlib.h>
 #include <stdbool.h>
@@ -17,7 +17,7 @@ const struct stack_i STACK = {
 int stack_init(p_stack* stack)
 {
     if (stack == null) { return 1; }
-    *stack = (p_stack)calloc(1u, sizeof(s_stack));
+    *stack = (p_stack)calloc(1u, sizeof(stack_s));
     p_stack s = *stack;
     if (s == null) { return 2; }
     return 0;
